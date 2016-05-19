@@ -19,16 +19,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\Common.h" />
-    <ClInclude Include="inc\EffectBase.h" />
-    <ClInclude Include="inc\LightFXBase.h" />
-    <ClInclude Include="inc\Timer.h" />
-    <ClInclude Include="public\ILightable.h" />
-    <ClInclude Include="public\ILightEffect.h" />
+    <ClInclude Include="public\Bitmap.h" />
+    <ClInclude Include="public\Common.h" />
+    <ClInclude Include="public\ConstantRateDriver.h" />
+    <ClInclude Include="public\IDrivable.h" />
+    <ClInclude Include="public\ILayer.h" />
+    <ClInclude Include="public\Layers\SolidColorLayer.h" />
+    <ClInclude Include="public\OutputBitmap.h" />
+    <ClInclude Include="public\Panel.h" />
+    <ClInclude Include="public\Pixel.h" />
+    <ClInclude Include="public\Timer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\EffectBase.cpp" />
-    <ClCompile Include="src\LightFXBase.cpp" />
+    <ClCompile Include="public\ConstantRateDriver.cpp" />
+    <ClCompile Include="src\Bitmap.cpp" />
+    <ClCompile Include="src\OutputBitmap.cpp" />
+    <ClCompile Include="src\Panel.cpp" />
     <ClCompile Include="src\Timer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -81,7 +87,7 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <PropertyGroup>
     <IncludePath>$(MSBuildProjectDirectory)\inc;$(MSBuildProjectDirectory)\public;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

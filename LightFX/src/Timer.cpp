@@ -2,7 +2,7 @@
 #include <ratio>
 #include "Timer.h"
 
-bool Timer::Start()
+bool LightFx::Timer::Start()
 {
     std::lock_guard<std::mutex> lock(m_threadMutex);
 
@@ -16,14 +16,17 @@ bool Timer::Start()
     return true;
 }
 
-void Timer::Stop()
+void LightFx::Timer::Stop()
 {
     m_isActive = false;
 }
 
-void Timer::TimerLoop()
+void LightFx::Timer::TimerLoop()
 {
     using namespace std::chrono;
+
+    // Set the time.
+    m_lastTickTime = high_resolution_clock::now();
 
     while (m_isActive)
     {

@@ -71,7 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\qdamere\Repos\LightFX\LightFX\public;C:\Users\qdamere\Repos\LightFX\LightFX\inc;$(IncludePath)</IncludePath>
+    <IncludePath>..\LightFx\public;C:\Users\qdamere\Repos\LightFX\LightFX\inc;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>

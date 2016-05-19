@@ -4,41 +4,62 @@
     <Filter Include="src">
       <UniqueIdentifier>{efbd5cea-fce1-4a86-b2cc-0952daf5e5e5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="inc">
-      <UniqueIdentifier>{66319a7f-1031-4cd9-bbdb-114d3c566ed5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="public">
       <UniqueIdentifier>{25c33c71-b59e-4ac8-98cb-a4110cafdbe8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="public\Layers">
+      <UniqueIdentifier>{2366f81b-d669-4bdf-a7e8-141e544cc83c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Layers">
+      <UniqueIdentifier>{b68838ea-4388-4d0a-b48f-8b6534ce67f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="public\ILightable.h">
+    <ClInclude Include="public\Common.h">
       <Filter>public</Filter>
     </ClInclude>
-    <ClInclude Include="public\ILightEffect.h">
+    <ClInclude Include="public\Timer.h">
       <Filter>public</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Common.h">
-      <Filter>inc</Filter>
+    <ClInclude Include="public\Panel.h">
+      <Filter>public</Filter>
     </ClInclude>
-    <ClInclude Include="inc\EffectBase.h">
-      <Filter>inc</Filter>
+    <ClInclude Include="public\Pixel.h">
+      <Filter>public</Filter>
     </ClInclude>
-    <ClInclude Include="inc\LightFXBase.h">
-      <Filter>inc</Filter>
+    <ClInclude Include="public\Bitmap.h">
+      <Filter>public</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Timer.h">
-      <Filter>inc</Filter>
+    <ClInclude Include="public\ConstantRateDriver.h">
+      <Filter>public</Filter>
+    </ClInclude>
+    <ClInclude Include="public\IDrivable.h">
+      <Filter>public</Filter>
+    </ClInclude>
+    <ClInclude Include="public\ILayer.h">
+      <Filter>public</Filter>
+    </ClInclude>
+    <ClInclude Include="public\Layers\SolidColorLayer.h">
+      <Filter>public\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="public\OutputBitmap.h">
+      <Filter>public</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\EffectBase.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\LightFXBase.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\Timer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="public\ConstantRateDriver.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Panel.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutputBitmap.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Bitmap.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
