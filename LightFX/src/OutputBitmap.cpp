@@ -19,7 +19,7 @@ uint8_t* OutputBitmap::GetPixelArray()
     if (!m_rawPixelArray)
     {
         // We don't have it so we need to make it
-        m_rawPixelArray = new uint8_t[GetPixelArrayLength()];
+        m_rawPixelArray = new uint8_t[static_cast<unsigned int>(GetPixelArrayLength())];
 
         // Flatten the bitmap to the array.
         uint64_t currentPos = 0;
@@ -29,11 +29,11 @@ uint8_t* OutputBitmap::GetPixelArray()
             {
                 // For each pixel, compute the values
                 Pixel pixel = m_inputBitmap.GetPixel(x, y);
-                m_rawPixelArray[currentPos] = (pixel.R * pixel.A) * 255;
+                m_rawPixelArray[currentPos] = static_cast<uint8_t>(pixel.R * 255.0);
                 currentPos++;
-                m_rawPixelArray[currentPos] = (pixel.G * pixel.A) * 255;
+                m_rawPixelArray[currentPos] = static_cast<uint8_t>(pixel.G * 255.0);
                 currentPos++;
-                m_rawPixelArray[currentPos] = (pixel.B * pixel.A) * 255;
+                m_rawPixelArray[currentPos] = static_cast<uint8_t>(pixel.B * 255.0);
                 currentPos++;
             }
         }

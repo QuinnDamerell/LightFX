@@ -19,20 +19,35 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="public\Bitmap.h" />
-    <ClInclude Include="public\Common.h" />
-    <ClInclude Include="public\ConstantRateDriver.h" />
-    <ClInclude Include="public\IDrivable.h" />
-    <ClInclude Include="public\ILayer.h" />
-    <ClInclude Include="public\Layers\SolidColorLayer.h" />
-    <ClInclude Include="public\OutputBitmap.h" />
-    <ClInclude Include="public\Panel.h" />
-    <ClInclude Include="public\Pixel.h" />
-    <ClInclude Include="public\Timer.h" />
+    <ClInclude Include="inc\Bitmap.h" />
+    <ClInclude Include="inc\Common.h" />
+    <ClInclude Include="inc\ConstantRateDriver.h" />
+    <ClInclude Include="inc\IDrivable.h" />
+    <ClInclude Include="inc\ILayer.h" />
+    <ClInclude Include="inc\Layers\Drawable\Color\ConstantColorable.h" />
+    <ClInclude Include="inc\Layers\Drawable\DrawableLayer.h" />
+    <ClInclude Include="inc\Layers\Drawable\Draw\DrawablePixel.h" />
+    <ClInclude Include="inc\Layers\Drawable\Fade\ConstantFadable.h" />
+    <ClInclude Include="inc\Layers\Drawable\Fade\SimpleFade.h" />
+    <ClInclude Include="inc\Layers\Drawable\IColorable.h" />
+    <ClInclude Include="inc\Layers\Drawable\IDrawable.h" />
+    <ClInclude Include="inc\Layers\Drawable\IFadable.h" />
+    <ClInclude Include="inc\Layers\Drawable\TimelineObject.h" />
+    <ClInclude Include="inc\Layers\Drawable\SimpleColorableBase.h" />
+    <ClInclude Include="inc\Layers\Drawable\SimpleDrawableBase.h" />
+    <ClInclude Include="inc\Layers\Drawable\SimpleFadableBase.h" />
+    <ClInclude Include="inc\Layers\SolidColorLayer.h" />
+    <ClInclude Include="inc\OutputBitmap.h" />
+    <ClInclude Include="inc\Panel.h" />
+    <ClInclude Include="inc\Pixel.h" />
+    <ClInclude Include="inc\Timer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="public\ConstantRateDriver.cpp" />
     <ClCompile Include="src\Bitmap.cpp" />
+    <ClCompile Include="src\ConstantRateDriver.cpp" />
+    <ClCompile Include="src\Layers\Drawable\DrawableLayer.cpp" />
+    <ClCompile Include="src\Layers\Drawable\SimpleColorableBase.cpp" />
+    <ClCompile Include="src\Layers\Drawable\SimpleDrawableBase.cpp" />
     <ClCompile Include="src\OutputBitmap.cpp" />
     <ClCompile Include="src\Panel.cpp" />
     <ClCompile Include="src\Timer.cpp" />

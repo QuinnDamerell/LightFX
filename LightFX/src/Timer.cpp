@@ -1,8 +1,11 @@
 #include <chrono>
 #include <ratio>
+
 #include "Timer.h"
 
-bool LightFx::Timer::Start()
+using namespace LightFx;
+
+bool Timer::Start()
 {
     std::lock_guard<std::mutex> lock(m_threadMutex);
 
@@ -16,12 +19,12 @@ bool LightFx::Timer::Start()
     return true;
 }
 
-void LightFx::Timer::Stop()
+void Timer::Stop()
 {
     m_isActive = false;
 }
 
-void LightFx::Timer::TimerLoop()
+void Timer::TimerLoop()
 {
     using namespace std::chrono;
 
@@ -31,8 +34,8 @@ void LightFx::Timer::TimerLoop()
     while (m_isActive)
     {
         // Grab the time since the last tick.
-        high_resolution_clock::time_point startTime = high_resolution_clock::now();
-        high_resolution_clock::duration timeSinceRun = startTime - m_lastTickTime;
+        time_point startTime = high_resolution_clock::now();
+        duration timeSinceRun = startTime - m_lastTickTime;
         m_lastTickTime = startTime;
         auto timeSinceRunMs = duration_cast<milliseconds>(timeSinceRun);
 
@@ -40,11 +43,11 @@ void LightFx::Timer::TimerLoop()
         auto callback = m_callback.lock();
         if (callback)
         {
-            callback->OnTimerTick(timeSinceRunMs.count());
+            callback->OnTimerTick(timeSinceRunMs);
         }
 
         // Sleep for the correct amount of time
-        milliseconds sleepTime = milliseconds(m_cycleTime) - duration_cast<milliseconds>(high_resolution_clock::now() - startTime);
+        milliseconds sleepTime = m_cycleTime - duration_cast<milliseconds>(high_resolution_clock::now() - startTime);
         std::this_thread::sleep_for(sleepTime);
     }
 }

@@ -3,11 +3,10 @@
 using namespace LightFx;
 
 Panel::Panel(uint64_t height, uint64_t width) :
-    m_bitmap(height, width),
-    m_compositeBitmap(height, width)
+    m_bitmap(height, width)
 { }
 
-void Panel::OnTick(uint64_t tick, uint64_t elapsedTimeMs)
+void Panel::OnTick(uint64_t tick, milliseconds elapsedTimeMs)
 {
     {
         // Grab the panel lock
@@ -19,15 +18,12 @@ void Panel::OnTick(uint64_t tick, uint64_t elapsedTimeMs)
         // Loop though all of the layers from bottom to top and ask them to draw.
         for (auto layerPair : m_layerCollection)
         {
-            // Clear the composite buffer.
-            m_compositeBitmap.Clear();
-
-            // Ask the layer to draw. If they return true we need to blend the composite bitmap 
-            // to the back buffer.
-            if (layerPair.second->OnDraw(tick, elapsedTimeMs, m_bitmap, m_compositeBitmap))
+            // Ask the layer to draw. If they return a bitmap ptr we should blend it.
+            BitmapPtr blendBitmap = layerPair.second->OnDraw(tick, elapsedTimeMs, m_bitmap);
+            if (blendBitmap)
             {
                 // We need to blend the m_compositeBitmap to the m_bitmap
-                m_bitmap.BlendInBitmap(m_compositeBitmap);
+                m_bitmap.BlendInBitmap(blendBitmap);
             }
         }
     }
@@ -54,4 +50,7 @@ void Panel::AddLayer(ILayerPtr layerToAdd, int64_t zIndex)
 
     // Add the layer
     m_layerCollection.insert(insertPosition, std::pair<int64_t, ILayerPtr>(zIndex, layerToAdd));
+
+    // Tell the panel what our size is.
+    layerToAdd->UpdatePanelSize(m_bitmap.GetHeight(), m_bitmap.GetWidth());
 }
