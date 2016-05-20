@@ -27,6 +27,9 @@ namespace LightFx
         // Sets a pixel to a value.
         inline void SetPixel(uint64_t x, uint64_t y, Pixel& value);
 
+        // Adds a color to the current value.
+        void AddToPixelValue(uint64_t x, uint64_t y, Pixel& value);
+
         inline uint64_t GetWidth()
         {
             return m_width;

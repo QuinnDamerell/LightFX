@@ -24,6 +24,17 @@ void Bitmap::SetPixel(uint64_t x, uint64_t y, Pixel& value)
     m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)].R = value.R;
 }
 
+
+void Bitmap::AddToPixelValue(uint64_t x, uint64_t y, Pixel& value)
+{
+    Pixel& currentColor = m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)];
+    m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)].A = std::min(1.0, currentColor.A + value.A); // Note this might be wrong, we might just want to compute alpha
+    m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)].R = std::min(1.0, currentColor.R + value.R); 
+    m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)].G = std::min(1.0, currentColor.G + value.G);
+    m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)].B = std::min(1.0, currentColor.B + value.B); 
+}
+
+
 void Bitmap::BlendInBitmap(BitmapPtr blendBitmap)
 {
     // Make sure our bitmaps are the size

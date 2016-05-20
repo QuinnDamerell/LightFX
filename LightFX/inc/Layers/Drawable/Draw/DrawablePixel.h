@@ -28,7 +28,7 @@ namespace LightFx
                 void DrawPixels(uint64_t tickCount, milliseconds elapsedTime, BitmapPtr buffer, Pixel color)
                 {
                     // Simply draw this one pixel
-                    buffer->SetPixel(m_x, m_y, color);
+                    buffer->AddToPixelValue(m_x, m_y, color);
                 }
 
             private:
