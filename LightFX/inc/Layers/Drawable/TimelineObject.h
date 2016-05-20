@@ -1,7 +1,7 @@
 #pragma once
 
-#include <stdint.h>
 #include <algorithm>
+#include <stdint.h>
 
 #include "Common.h"
 
@@ -95,7 +95,7 @@ namespace LightFx
                 double GetProgress()
                 {
                     double progress = (static_cast<double>(m_remaining.count()) / static_cast<double>(m_duration.count()));
-                    return std::max(0.0, std::min(progress, 1.0));
+                    return progress > 1 ? 1 : (progress < 0 ? 0 : progress);
                 }
 
                 // Returns an interpolated value between from and to based on progress.
