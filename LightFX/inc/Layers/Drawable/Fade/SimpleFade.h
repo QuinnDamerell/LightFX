@@ -24,9 +24,14 @@ namespace LightFx
                 {
                     // Set our duration
                     SetDuration(duration);
+                }
 
-                    // Force use to clean up when done
-                    ShouldCleanupWhenFinshed(true);
+                virtual ~SimpleFade() {};
+
+                void SetToAndFrom(double to, double from)
+                {
+                    m_startValue = from;
+                    m_endValue = to;
                 }
 
             protected:
