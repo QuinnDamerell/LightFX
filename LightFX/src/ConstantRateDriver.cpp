@@ -28,7 +28,7 @@ void ConstantRateDriver::AddDriveable(IDrivableWeakPtr callback)
 {
     // Add the new drivable to the list
     std::lock_guard<std::mutex> lock(m_callbacksLock);
-    m_callbacks.insert(m_callbacks.begin(), callback);
+    m_callbacks.insert(m_callbacks.end(), callback);
 }
 
 // Fired when the timer ticks
