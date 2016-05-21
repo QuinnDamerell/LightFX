@@ -17,7 +17,7 @@ namespace LightFx
 
             public:
                 // Called when the color should return a color
-                virtual Pixel OnColor(uint64_t tickCount, milliseconds elapsedTime) = 0;
+                virtual LightColor OnColor(uint64_t tickCount, milliseconds elapsedTime) = 0;
             };
         }
     }

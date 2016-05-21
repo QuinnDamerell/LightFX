@@ -6,7 +6,7 @@ using namespace LightFx::Layers::Drawable;
 void SimpleDrawableBase::OnDraw(uint64_t tickCount, milliseconds elapsedTime, BitmapPtr buffer)
 {
     // The default draw color
-    Pixel drawColor(1, 1, 1, 1);
+    LightColor drawColor(1, 1, 1, 1);
 
     // If we have a colorable ask it for color
     if (m_colorable)

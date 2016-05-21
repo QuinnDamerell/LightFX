@@ -32,7 +32,7 @@ namespace LightFx
             }
 
             // Sets the color of the solid.
-            void SetColor(Pixel color)
+            void SetColor(LightColor color)
             {
                 m_solidColor = color;
                 if (m_bitmap)
@@ -42,7 +42,7 @@ namespace LightFx
             }
 
             // Holds the current color
-            Pixel m_solidColor;
+            LightColor m_solidColor;
 
             // Holds our bitmap we will draw to
             BitmapPtr m_bitmap;

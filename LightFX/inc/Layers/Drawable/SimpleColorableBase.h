@@ -4,7 +4,7 @@
 
 #include "Common.h"
 #include "Layers/Drawable/IColorable.h"
-#include "Layers/Drawable/IFadable.h"
+#include "Layers/Drawable/IIntensitable.h"
 #include "Layers/Drawable/TimelineObject.h"
 #include "Bitmap.h"
 
@@ -22,16 +22,16 @@ namespace LightFx
             public:
 
                 // Sets the fade element for this drawable
-                void SetFadable(IFadablePtr faceable)
+                void SetFadable(IIntensitablePtr intensitable)
                 {
-                    m_fadable = faceable;
-                    SetChildTimeline(std::dynamic_pointer_cast<TimelineObject>(m_fadable));                    
+                    m_intensitable = intensitable;
+                    SetChildTimeline(std::dynamic_pointer_cast<TimelineObject>(m_intensitable));
                 }
 
             protected:
                 // We can only be created by base classes
                 SimpleColorableBase() :
-                    m_fadable(nullptr)
+                    m_intensitable(nullptr)
                 {}
 
                 //
@@ -39,17 +39,17 @@ namespace LightFx
                 // 
 
                 // Called when the colorable should return a color.
-                virtual Pixel OnColor(uint64_t tickCount, milliseconds elapsedTime);
+                virtual LightColor OnColor(uint64_t tickCount, milliseconds elapsedTime);
 
                 //
                 // Base functions
                 //
 
                 // Called by the base when the sub class should return a color
-                virtual Pixel GetColor(uint64_t tickCount, milliseconds elapsedTime, double alpha) = 0;
+                virtual LightColor GetColor(uint64_t tickCount, milliseconds elapsedTime, double intensity) = 0;
 
             private:
-                IFadablePtr m_fadable;
+                IIntensitablePtr m_intensitable;
             };
         }
     }

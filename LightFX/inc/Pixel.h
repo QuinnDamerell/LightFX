@@ -9,27 +9,68 @@
 
 namespace LightFx
 {    
+    // Base class for something that has intensity
+    class IntensityObject
+    {
+    public:
+        IntensityObject() :
+            IntensityObject(1)
+        {};
+
+        IntensityObject(double intensity) :
+            Intensity(intensity)
+        { }
+
+        double Intensity;
+    };
+
+    // An intensity and color
+    class LightColor :
+        public IntensityObject
+    {
+    public:
+        LightColor() :
+            LightColor(0,0,0,0)
+        {};
+
+        LightColor(double intensity, double r, double g, double b) :
+            R(r),
+            G(g),
+            B(b),
+            IntensityObject(intensity)
+        {};
+
+        double R;
+        double G;
+        double B;
+    };
+
+    // Base class for a pixel
     class Pixel
-    {        
-        public:
-            Pixel() :
-                A(0),
-                R(0),
-                G(0),
-                B(0)
-            {};
+    {
+    public:
+        Pixel() :
+            R(0),
+            G(0),
+            B(0)
+        {};
 
-            Pixel(double a, double r, double g, double b) :
-                A(a),
-                R(r),
-                G(g),
-                B(b)
-            { }
+        Pixel(double r, double g, double b) :
+            R(r),
+            G(g),
+            B(b)
+        { }
 
-            double A;
-            double R;
-            double G;
-            double B;
+        Pixel(LightColor lightColor)
+        {
+            R = lightColor.R * lightColor.Intensity;
+            G = lightColor.G * lightColor.Intensity;
+            B = lightColor.B * lightColor.Intensity;
+        }
+
+        double R;
+        double G;
+        double B;
     };
 
     typedef std::vector<std::vector<Pixel>> Pixel2DArray;
@@ -39,7 +80,7 @@ namespace LightFx
     // and color ranges. If the color is generated based on 3 random values from 1 - 0
     // for each RBG there is a higher chance of hitting 50% for each value, thus the 
     // resulting colors are more likely to be in the middle of the color range.
-    static Pixel GenerateRandomColor(bool randomAlpha = false)
+    static LightColor GenerateRandomColor(bool randomIntensity = false)
     {
         const uint8_t RANGE_SIZE = 6;
         const double redRange[] = { 1, 1, 0, 0, 0, 1 };
@@ -73,17 +114,17 @@ namespace LightFx
         double locationInRange = normalizedValue / (1.0 / static_cast<double>(RANGE_SIZE));
 
         // Now set the value
-        Pixel randomColor;
-        randomColor.A = 1;
+        LightColor randomColor;
+        randomColor.Intensity = 1;
         randomColor.R = redRange[rangeBot] + (redRange[rangeTop] - redRange[rangeBot]) * locationInRange;
         randomColor.G = greenRange[rangeBot] + (greenRange[rangeTop] - greenRange[rangeBot]) * locationInRange;
         randomColor.B = blueRange[rangeBot] + (blueRange[rangeTop] - blueRange[rangeBot]) * locationInRange;
 
-        // Set a random alpha if needed
-        if (randomAlpha)
+        // Set a random intensity if needed
+        if (randomIntensity)
         {
             // Technically this should be part of the range, but this is good enough for now.
-            randomColor.A = dist(rand);
+            randomColor.Intensity = dist(rand);
         }
 
         return randomColor;

@@ -18,11 +18,11 @@ namespace LightFx
             {
 
             public:
-                ConstantColorable(Pixel color) :
+                ConstantColorable(LightColor color) :
                     m_color(color)
                 { }
 
-                void SetColor(Pixel color)
+                void SetColor(LightColor color)
                 {
                     m_color = color;
                 }
@@ -30,14 +30,14 @@ namespace LightFx
             protected:
 
                 // Called by the base when the sub class should get a color
-                Pixel GetColor(uint64_t tickCount, milliseconds elapsedTime, double alpha)
+                LightColor GetColor(uint64_t tickCount, milliseconds elapsedTime, double intensity)
                 {
-                    m_color.A = alpha;
+                    m_color.Intensity = intensity;
                     return m_color;
                 }
 
             private:
-                Pixel m_color;
+                LightColor m_color;
             };
         }
     }

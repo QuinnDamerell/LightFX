@@ -8,7 +8,8 @@
 namespace LightFx
 {
     DECLARE_SMARTPOINTER(Bitmap);
-    class Bitmap
+    class Bitmap :
+        IntensityObject
     {
 
     public:
@@ -27,8 +28,20 @@ namespace LightFx
         // Sets a pixel to a value.
         inline void SetPixel(uint64_t x, uint64_t y, Pixel& value);
 
+        // Sets a light color to the bitmap
+        void SetLightColor(uint64_t x, uint64_t y, LightColor& value)
+        {
+            SetPixel(x, y, Pixel(value));
+        }
+
         // Adds a color to the current value.
         void AddToPixelValue(uint64_t x, uint64_t y, Pixel& value);
+
+        // Sets a light color to the bitmap
+        void AddLightColorToPixel(uint64_t x, uint64_t y, LightColor& value)
+        {
+            AddToPixelValue(x, y, Pixel(value));
+        }
 
         inline uint64_t GetWidth()
         {
@@ -47,7 +60,7 @@ namespace LightFx
         // Clears the bitmap
         void Clear()
         {
-            Pixel empty(0, 0, 0, 0);
+            LightColor empty(0, 0, 0, 0);
             FillRect(empty);
         }
 
@@ -55,13 +68,13 @@ namespace LightFx
         void BlendInBitmap(BitmapPtr composite);
 
         // Fills the entire bitmap
-        void FillRect(Pixel& pixelColor)
+        void FillRect(LightColor& lightColor)
         {
-            FillRect(pixelColor, 0, 0, GetWidth(), GetHeight());
+            FillRect(lightColor, 0, 0, GetWidth(), GetHeight());
         }
 
         // Fills a region of the bitmap
-        void FillRect(Pixel& pixelColor, uint64_t top, uint64_t left, uint64_t right, uint64_t bottom);
+        void FillRect(LightColor& lightColor, uint64_t top, uint64_t left, uint64_t right, uint64_t bottom);
 
     protected:
         // Keep the height and width.

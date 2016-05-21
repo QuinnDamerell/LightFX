@@ -3,17 +3,17 @@
 using namespace LightFx;
 using namespace LightFx::Layers::Drawable;
 
-Pixel SimpleColorableBase::OnColor(uint64_t tickCount, milliseconds elapsedTime)
+LightColor SimpleColorableBase::OnColor(uint64_t tickCount, milliseconds elapsedTime)
 {
-    // The default alpha
-    double alphaValue = 1.0;
+    // The default intensity
+    double intensityValue = 1.0;
 
-    // If we have a colorable ask it for color
-    if (m_fadable)
+    // If we have a intensitable ask it for color
+    if (m_intensitable)
     {
-        alphaValue = m_fadable->OnFade(tickCount, elapsedTime);
+        intensityValue = m_intensitable->OnIntensity(tickCount, elapsedTime);
     }
 
     // Now call the base class to draw
-    return GetColor(tickCount, elapsedTime, alphaValue);
+    return GetColor(tickCount, elapsedTime, intensityValue);
 }

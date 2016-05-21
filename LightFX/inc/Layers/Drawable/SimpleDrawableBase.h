@@ -46,7 +46,7 @@ namespace LightFx
                 //
                 
                 // Called by the base when the sub class should draw pixels
-                virtual void DrawPixels(uint64_t tickCount, milliseconds elapsedTime, BitmapPtr buffer, Pixel color) = 0;
+                virtual void DrawPixels(uint64_t tickCount, milliseconds elapsedTime, BitmapPtr buffer, LightColor& color) = 0;
 
             private:
                 IColorablePtr m_colorable;

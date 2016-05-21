@@ -25,10 +25,10 @@ namespace LightFx
 
             protected:
                 // Called by the base when the sub class should draw pixels
-                void DrawPixels(uint64_t tickCount, milliseconds elapsedTime, BitmapPtr buffer, Pixel color)
+                void DrawPixels(uint64_t tickCount, milliseconds elapsedTime, BitmapPtr buffer, LightColor& color)
                 {
                     // Simply draw this one pixel
-                    buffer->AddToPixelValue(m_x, m_y, color);
+                    buffer->AddLightColorToPixel(m_x, m_y, color);
                 }
 
             private:

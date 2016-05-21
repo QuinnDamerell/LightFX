@@ -5,6 +5,7 @@
 using namespace LightFx;
 
 Bitmap::Bitmap(uint64_t height, uint64_t width) :
+    IntensityObject(1),
     m_height(height),
     m_width(width)
 {
@@ -18,7 +19,6 @@ Bitmap::Bitmap(uint64_t height, uint64_t width) :
 
 void Bitmap::SetPixel(uint64_t x, uint64_t y, Pixel& value)
 {
-    m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)].A = value.A;
     m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)].B = value.B;
     m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)].G = value.G;
     m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)].R = value.R;
@@ -28,12 +28,10 @@ void Bitmap::SetPixel(uint64_t x, uint64_t y, Pixel& value)
 void Bitmap::AddToPixelValue(uint64_t x, uint64_t y, Pixel& value)
 {
     Pixel& currentColor = m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)];
-    m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)].A = std::min(1.0, currentColor.A + value.A); // Note this might be wrong, we might just want to compute alpha
     m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)].R = std::min(1.0, currentColor.R + value.R); 
     m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)].G = std::min(1.0, currentColor.G + value.G);
     m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)].B = std::min(1.0, currentColor.B + value.B); 
 }
-
 
 void Bitmap::BlendInBitmap(BitmapPtr blendBitmap)
 {
@@ -51,13 +49,13 @@ void Bitmap::BlendInBitmap(BitmapPtr blendBitmap)
             Pixel blendedPixel;
             Pixel localValue = m_bitmap[x][y];
             Pixel compositeValue = blendBitmap->GetPixel(x, y);
+            double blendIntensity = blendBitmap->Intensity;
 
             // For this blend we are trying to emulate light. So we will use light as intensity and only add the 
             // color values together.
-            blendedPixel.R = std::min(1.0, ((compositeValue.R * compositeValue.A) + localValue.R));
-            blendedPixel.G = std::min(1.0, ((compositeValue.G * compositeValue.A) + localValue.G));
-            blendedPixel.B = std::min(1.0, ((compositeValue.B * compositeValue.A) + localValue.B));
-            blendedPixel.A = std::max(localValue.A, compositeValue.A);
+            blendedPixel.R = std::min(1.0, ((compositeValue.R * blendIntensity) + localValue.R));
+            blendedPixel.G = std::min(1.0, ((compositeValue.G * blendIntensity) + localValue.G));
+            blendedPixel.B = std::min(1.0, ((compositeValue.B * blendIntensity) + localValue.B));
 
             // Set the new color
             SetPixel(x, y, blendedPixel);
@@ -65,7 +63,7 @@ void Bitmap::BlendInBitmap(BitmapPtr blendBitmap)
     }
 }
 
-void Bitmap::FillRect(Pixel& pixelColor, uint64_t top, uint64_t left, uint64_t right, uint64_t bottom)
+void Bitmap::FillRect(LightColor& lightColor, uint64_t top, uint64_t left, uint64_t right, uint64_t bottom)
 {
     // Do a quick bound check
     if (top > bottom || left > right || right > GetWidth() || bottom > GetHeight())
@@ -73,13 +71,16 @@ void Bitmap::FillRect(Pixel& pixelColor, uint64_t top, uint64_t left, uint64_t r
         throw std::invalid_argument("Args out of bounds");
     }
 
+    // Flatten the LightColor
+    Pixel pixel(lightColor);
+
     // Start at the left and go to right
     for (uint64_t x = left; x < right; x++)
     {
         // And start at the top and go to bottom
         for (uint64_t y = top; y < bottom; y++)
         {
-            SetPixel(x, y, pixelColor);
+            SetPixel(x, y, pixel);
         }
     }
 }

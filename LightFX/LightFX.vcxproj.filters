@@ -19,23 +19,23 @@
     <Filter Include="src\Layers\Drawable">
       <UniqueIdentifier>{06fcbfce-52f1-4d7e-8c0e-1360371b96db}</UniqueIdentifier>
     </Filter>
-    <Filter Include="inc\Layers\Drawable\Fade">
-      <UniqueIdentifier>{80b4886c-0fd9-44b4-bcbf-71f9b3edce8d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="inc\Layers\Drawable\Color">
       <UniqueIdentifier>{4b0169d7-ad87-4f0e-863c-9120e3d2a780}</UniqueIdentifier>
     </Filter>
     <Filter Include="inc\Layers\Drawable\Draw">
       <UniqueIdentifier>{c09aef19-683e-493a-a362-4e1407986c5c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Layers\Drawable\Fade">
-      <UniqueIdentifier>{985bffbe-0f71-49a7-ab9e-05364bed1aa9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Layers\Drawable\Color">
       <UniqueIdentifier>{693ec167-ace9-44b2-8959-23833d7371a4}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Layers\Drawable\Draw">
       <UniqueIdentifier>{2d089aa7-3a9c-412e-b7db-3150c5d6df8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="inc\Layers\Drawable\Intensity">
+      <UniqueIdentifier>{80b4886c-0fd9-44b4-bcbf-71f9b3edce8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Layers\Drawable\Intensity">
+      <UniqueIdentifier>{985bffbe-0f71-49a7-ab9e-05364bed1aa9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -78,20 +78,11 @@
     <ClInclude Include="inc\Layers\Drawable\IDrawable.h">
       <Filter>inc\Layers\Drawable</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Layers\Drawable\IFadable.h">
-      <Filter>inc\Layers\Drawable</Filter>
-    </ClInclude>
     <ClInclude Include="inc\Layers\Drawable\SimpleDrawableBase.h">
       <Filter>inc\Layers\Drawable</Filter>
     </ClInclude>
     <ClInclude Include="inc\Layers\Drawable\SimpleColorableBase.h">
       <Filter>inc\Layers\Drawable</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Layers\Drawable\SimpleFadableBase.h">
-      <Filter>inc\Layers\Drawable</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Layers\Drawable\Fade\ConstantFadable.h">
-      <Filter>inc\Layers\Drawable\Fade</Filter>
     </ClInclude>
     <ClInclude Include="inc\Layers\Drawable\Color\ConstantColorable.h">
       <Filter>inc\Layers\Drawable\Color</Filter>
@@ -99,10 +90,19 @@
     <ClInclude Include="inc\Layers\Drawable\Draw\DrawablePixel.h">
       <Filter>inc\Layers\Drawable\Draw</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Layers\Drawable\Fade\SimpleFade.h">
-      <Filter>inc\Layers\Drawable\Fade</Filter>
-    </ClInclude>
     <ClInclude Include="inc\Layers\Drawable\TimelineObject.h">
+      <Filter>inc\Layers\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Layers\Drawable\Intensity\ConstantIntensity.h">
+      <Filter>inc\Layers\Drawable\Intensity</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Layers\Drawable\Intensity\SimpleIntensityFade.h">
+      <Filter>inc\Layers\Drawable\Intensity</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Layers\Drawable\IIntensitable.h">
+      <Filter>inc\Layers\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Layers\Drawable\SimpleIntensitableBase.h">
       <Filter>inc\Layers\Drawable</Filter>
     </ClInclude>
   </ItemGroup>
