@@ -22,7 +22,7 @@ namespace LightFx
 
             
             class TimelineObject :
-                std::enable_shared_from_this<TimelineObject>
+                public std::enable_shared_from_this<TimelineObject>
             {
 
             public:
