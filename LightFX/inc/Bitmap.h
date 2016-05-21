@@ -20,18 +20,19 @@ namespace LightFx
         //
 
         // Returns what the pixel current is.
-        inline Pixel& GetPixel(uint64_t x, uint64_t y)
+        Pixel& GetPixel(uint64_t x, uint64_t y)
         {
             return m_bitmap[static_cast<unsigned int>(x)][static_cast<unsigned int>(y)];
         }
 
         // Sets a pixel to a value.
-        inline void SetPixel(uint64_t x, uint64_t y, Pixel& value);
+        void SetPixel(uint64_t x, uint64_t y, Pixel& value);
 
         // Sets a light color to the bitmap
         void SetLightColor(uint64_t x, uint64_t y, LightColor& value)
         {
-            SetPixel(x, y, Pixel(value));
+            Pixel pixel(value);
+            SetPixel(x, y, pixel);
         }
 
         // Adds a color to the current value.
@@ -40,7 +41,8 @@ namespace LightFx
         // Sets a light color to the bitmap
         void AddLightColorToPixel(uint64_t x, uint64_t y, LightColor& value)
         {
-            AddToPixelValue(x, y, Pixel(value));
+            Pixel pixel(value);
+            AddToPixelValue(x, y, pixel);
         }
 
         inline uint64_t GetWidth()
