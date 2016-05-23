@@ -47,6 +47,13 @@ void Drawable::AddDrawable(IDrawablePtr drawable, int64_t zIndex)
 
 void Drawable::OnDraw(uint64_t tick, milliseconds elapsedTime, BitmapPtr backBuffer)
 {
+    // Update our fader if we have one first. We don't want to skip out
+    // from an intensity of 0 if it actually shouldn't be.
+    if (auto fader = GetFader())
+    {
+        fader->OnTick(tick, elapsedTime);
+    }
+
     // If we aren't visible don't bother drawing. We will keep track of how much time
     // we missed so we can report it correctly when we draw again.
     if (GetIntensity() < 0.001)
@@ -80,12 +87,6 @@ void Drawable::OnDraw(uint64_t tick, milliseconds elapsedTime, BitmapPtr backBuf
 
     // Now draw ourself
     OnDrawSelf(tick, elapsedTime);
-
-    // Update our fader if we have one
-    if (auto fader = GetFader())
-    {
-       // fader->
-    }
 
     // Last, add our bitmap to the back buffer
     backBuffer->BlendInBitmap(m_bitmap, GetIntensity());

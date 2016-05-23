@@ -8,7 +8,8 @@ namespace LightFx
 {
     DECLARE_SMARTPOINTER(IntensityObject);
     class IntensityObject :
-        public IIntensityObject
+        public IIntensityObject,
+        public std::enable_shared_from_this<IntensityObject>
     {
     public:
         IntensityObject() :
@@ -34,7 +35,19 @@ namespace LightFx
         // Sets a fader object on this object
         virtual void SetFader(Fadables::IFaderPtr fader)
         {
+            if (m_fader)
+            {
+                // If we had a fader remove ourselves.
+                m_fader->RemoveFadingDrawable(shared_from_this());
+            }
+
             m_fader = fader;
+
+            if (m_fader)
+            {
+                // If we have a fader send register ourselves
+                m_fader->AddFadingDrawable(shared_from_this());
+            }
         }
 
         // Sets a fader object on this object

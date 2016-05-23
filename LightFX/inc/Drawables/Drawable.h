@@ -4,8 +4,7 @@
 #include <mutex>
 
 #include "Common.h"
-#include "Drawables\IDrawable.h"
-#include "IntensityObject.h"
+#include "Drawables/IDrawable.h"
 #include "Bitmap.h"
 
 namespace LightFx
@@ -14,8 +13,7 @@ namespace LightFx
     {
         DECLARE_SMARTPOINTER(Drawable);
         class Drawable :
-            public IDrawable,
-            public IntensityObject
+            public IDrawable          
         {
 
         public:

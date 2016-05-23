@@ -31,6 +31,9 @@
     <Filter Include="src\Drawables">
       <UniqueIdentifier>{22fd0bba-1e5f-49bc-8ea7-f1c3ded73586}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Fadables">
+      <UniqueIdentifier>{8864fd3c-b4fe-4632-ba71-44b6f90c61b8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\Bitmap.h">
@@ -112,6 +115,9 @@
     </ClCompile>
     <ClCompile Include="src\Drawable\SolidDrawable.cpp">
       <Filter>src\Drawables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fadables\Fader.cpp">
+      <Filter>src\Fadables</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

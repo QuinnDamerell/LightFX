@@ -114,7 +114,15 @@ namespace LightFx
         // Returns the progress.
         double GetProgress()
         {
-            double progress = (static_cast<double>(m_remaining.count()) / static_cast<double>(m_duration.count()));
+            double progress;
+            if (m_duration.count() == 0)
+            {
+                progress = 1.0;
+            }
+            else
+            {
+                progress = (static_cast<double>(m_remaining.count()) / static_cast<double>(m_duration.count()));
+            }
             return progress > 1 ? 1 : (progress < 0 ? 0 : progress);
         }
 
@@ -144,7 +152,4 @@ namespace LightFx
         TimelineObjectWeakPtr m_childTimeline;
         bool m_shouldCleanupWhenFinished;
     };
-}
-     
-    
-}
+}   

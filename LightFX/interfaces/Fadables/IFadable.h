@@ -19,7 +19,7 @@ namespace LightFx
             virtual void SetFader(IFaderPtr fader) = 0;
 
             // Gets the fader if there is one
-            virtual Fadables::IFaderPtr GetFader() = 0;
+            virtual IFaderPtr GetFader() = 0;
         };
     }    
 }

@@ -8,6 +8,7 @@
 #include "Fadables/IFader.h"
 #include "Fadables/IFadable.h"
 #include "TimelineObject.h"
+#include "IIntensityObject.h"
 
 namespace LightFx
 {
@@ -15,34 +16,49 @@ namespace LightFx
     {
         DECLARE_SMARTPOINTER(Fader);
         class Fader :
-            public IFader,
-            public TimelineObject
+            public IFader
         {
         public:
+            Fader() :
+                Fader(0,0, milliseconds(0))
+            {}
 
-            virtual void OnTick(uint64_t tick, milliseconds elapsedTime) override
-            {
-                // Call the base
-                TimelineObject::OnTick(tick, elapsedTime);
-
-                // Now update the intensity.
-            };
-
-            void AddFadingDrawable(IFadableWeakPtr fadeable)
-            {
-                m_drawables.insert(m_drawables.begin(), fadeable);
+            Fader(double to, double from) :   
+                Fader(to, from, milliseconds(0))
+            { }
+            
+            Fader(double to, double from, milliseconds duration) :
+                m_to(to),
+                m_from(from)
+            { 
+                SetDuration(duration);
             }
 
-            void RemoveFadingDrawable(IFadableWeakPtr fadeable)
-            {
-                // todo
+            // Fired when we should update
+            virtual void OnTick(uint64_t tick, milliseconds elapsedTime) override;
 
+            // Used to add a drawable to our list
+            void AddFadingDrawable(IIntensityObjectWeakPtr fadeable);
 
-            }
+            // Used to remove a drawable to out list
+            void RemoveFadingDrawable(IIntensityObjectWeakPtr fadeable);
+
+            //
+            // Fader logic
+            virtual void SetTo(double to) { m_to = to; }
+            virtual double GetTo() { return m_to; }
+
+            virtual void SetFrom(double from) { m_from = from; }
+            virtual double GetFrom() { return m_from; }
 
         private:
-            std::vector<IFadableWeakPtr> m_drawables;
+            // Collection logic
+            std::mutex m_drawablesLock;
+            std::vector<IIntensityObjectWeakPtr> m_drawables;
 
+            // Fader vars
+            double m_to;
+            double m_from;
         };
     }
 }
