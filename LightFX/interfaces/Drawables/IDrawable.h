@@ -30,6 +30,13 @@ namespace LightFx
 
             // Called when the drawable should draw.
             virtual void OnDraw(uint64_t tickCount, milliseconds elapsedTime, BitmapPtr backBuffer) = 0;
+
+            // If set, when all of the time line objects on this drawable are done
+            // the drawable will be cleaned up.
+            virtual void CleanupWhenComplete(bool cleanup) = 0;
+
+            // Indicates if all of the time line objects are complete or not.
+            virtual bool ShouldBeCleanedUp() = 0;
         };
     }    
 }

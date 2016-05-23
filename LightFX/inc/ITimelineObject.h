@@ -19,6 +19,9 @@ namespace LightFx
 
         // Called by the base class to set the duration.
         virtual void SetDuration(milliseconds duration) = 0;
+
+        // Indicates if the timeline is done.
+        virtual bool IsComplete() = 0;
     };
 
     // Used send notifications when time lines are complete    

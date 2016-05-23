@@ -7,7 +7,7 @@
 #include "Timer.h"
 #include "IDrivable.h"
 
-#define PRINT_RENDER_TIME 1
+// #define PRINT_RENDER_TIME
 
 namespace LightFx
 {

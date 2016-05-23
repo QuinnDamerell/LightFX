@@ -32,6 +32,12 @@ namespace LightFx
             m_finishedCallback = callback;
         }
 
+        // Indicates if the time line is done or not
+        virtual bool IsComplete() 
+        {
+            return m_remaining.count() <= 0;
+        };
+
         // Called by the base class to set the duration.
         void SetDuration(milliseconds duration);
 

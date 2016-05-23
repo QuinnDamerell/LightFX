@@ -17,6 +17,14 @@ namespace LightFx
             public Drawable
         {
         public:
+            SolidDrawable() :
+                Drawable(false)
+            {}
+
+            SolidDrawable(bool shouldCleanUp) :
+                Drawable(shouldCleanUp)
+            {}
+
             // Sets the position of the drawing
             void SetPosition(uint64_t x, uint64_t y, uint64_t height, uint64_t width);
 

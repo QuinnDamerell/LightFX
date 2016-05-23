@@ -77,11 +77,23 @@ void Drawable::OnDraw(uint64_t tick, milliseconds elapsedTime, BitmapPtr backBuf
         // Grab the panel lock
         std::lock_guard<std::mutex> lock(m_drawableCollectionLock);
 
-        // Loop though all of the layers from bottom to top and ask them to draw.
-        for (auto drawablePair : m_drawableCollection)
+        // Loop through all of our children.
+        auto iter = m_drawableCollection.begin();
+        while (iter != m_drawableCollection.end())
         {
-            // Ask the drawable to draw.
-            drawablePair.first->OnDraw(tick, elapsedTime, m_bitmap);
+            // Check if any drawable should be cleaned up.
+            IDrawablePtr child = iter->first;
+            if (child->ShouldBeCleanedUp())
+            {
+                // If so remove them.
+                iter = m_drawableCollection.erase(iter);
+            }
+            else
+            {
+                // Ask the drawable to draw.
+                child->OnDraw(tick, elapsedTime, m_bitmap);
+                iter++;
+            }
         }
     }
 
@@ -90,4 +102,25 @@ void Drawable::OnDraw(uint64_t tick, milliseconds elapsedTime, BitmapPtr backBuf
 
     // Last, add our bitmap to the back buffer
     backBuffer->BlendInBitmap(m_bitmap, GetIntensity());
+}
+
+// If set, when all of the time line objects on this drawable are done
+// the drawable will be cleaned up.
+void Drawable::CleanupWhenComplete(bool cleanup)
+{
+    m_cleanUpWhenComplete = cleanup;
+}
+
+// Indicates if all of the time line objects are complete or not.
+bool Drawable::ShouldBeCleanedUp()
+{
+    // We will only consider cleaning up if we have a fader
+    if (auto fader = GetFader())
+    {
+        if (fader->IsComplete())
+        {
+            return m_cleanUpWhenComplete;
+        }
+    }
+    return false;
 }

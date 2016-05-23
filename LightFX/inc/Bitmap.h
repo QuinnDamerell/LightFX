@@ -50,7 +50,7 @@ namespace LightFx
 
         inline uint64_t GetHeight()
         {
-            return m_width;
+            return m_height;
         }
 
         // 
