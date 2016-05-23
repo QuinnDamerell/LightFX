@@ -47,6 +47,7 @@
     <ClCompile Include="src\Fadables\Fader.cpp" />
     <ClCompile Include="src\OutputBitmap.cpp" />
     <ClCompile Include="src\Panel.cpp" />
+    <ClCompile Include="src\TimelineObject.cpp" />
     <ClCompile Include="src\Timer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
