@@ -8,7 +8,7 @@
 #include "IDrivable.h"
 #include "Bitmap.h"
 #include "OutputBitmap.h"
-#include "ILayer.h"
+#include "Drawables/Drawable.h"
 
 namespace LightFx
 {
@@ -21,7 +21,8 @@ namespace LightFx
 
     DECLARE_SMARTPOINTER(Panel);
     class Panel : 
-        public IDrivable
+        public IDrivable,
+        public Drawables::Drawable
     {
 
     public:
@@ -31,10 +32,7 @@ namespace LightFx
         // Render Logic
 
         // Called when the panel should render
-        void OnTick(uint64_t tick, milliseconds elapsedTimeMs) override;
-
-        // Returns the current bitmap as a pixel array.
-        void GetPixelArray();
+        void OnTick(uint64_t tick, milliseconds elapsedTime) override;
 
         // Sets who will be notified when the render is complete
         void SetPanelRenderedCallback(IPanelRenderedCallbackWeakPtr callback)
@@ -45,12 +43,8 @@ namespace LightFx
         // Returns an output bitmap from the current bitmap
         OutputBitmapPtr GetOutputBitmap()
         {
-            return std::make_shared<OutputBitmap>(m_bitmap);
+            return std::make_shared<OutputBitmap>(m_backBuffer);
         }
-
-        //
-        // Layer Logic
-        void AddLayer(ILayerPtr layerToAdd, int64_t zIndex);
 
     protected:
 
@@ -58,14 +52,9 @@ namespace LightFx
         // Render logic
 
         // This is our main bitmap used for rendering the panel
-        Bitmap m_bitmap;
+        BitmapPtr m_backBuffer;
 
         // The callback to fire when a render is complete
         IPanelRenderedCallbackWeakPtr m_renderedCallback;
-
-        // 
-        // Layer logic
-        std::mutex m_layerCollectionLock;
-        std::vector<std::pair<int64_t, ILayerPtr>> m_layerCollection;
     };
 }

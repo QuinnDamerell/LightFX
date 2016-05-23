@@ -28,7 +28,7 @@ uint8_t* OutputBitmap::GetPixelArray()
             for (int y = 0; y < GetHeight(); y++)
             {
                 // For each pixel, compute the values
-                Pixel pixel = m_inputBitmap.GetPixel(x, y);
+                Pixel pixel = m_inputBitmap->GetPixel(x, y);
                 m_rawPixelArray[currentPos] = static_cast<uint8_t>(pixel.R * 255.0);
                 currentPos++;
                 m_rawPixelArray[currentPos] = static_cast<uint8_t>(pixel.G * 255.0);

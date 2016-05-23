@@ -13,7 +13,7 @@ namespace LightFx
     {
 
     public:
-        OutputBitmap(Bitmap inputBitmap) :
+        OutputBitmap(BitmapPtr inputBitmap) :
             m_inputBitmap(inputBitmap),
             m_rawPixelArray(nullptr)
         { }
@@ -22,12 +22,12 @@ namespace LightFx
 
         uint64_t GetWidth()
         {
-            return m_inputBitmap.GetWidth();
+            return m_inputBitmap->GetWidth();
         }
 
         uint64_t GetHeight()
         {
-            return m_inputBitmap.GetHeight();
+            return m_inputBitmap->GetHeight();
         }
 
         uint64_t GetPixelArrayLength()
@@ -39,7 +39,7 @@ namespace LightFx
 
     protected:
         // The backing bitmap
-        Bitmap m_inputBitmap;
+        BitmapPtr m_inputBitmap;
 
         // The array of the flattened bitmap.
         uint8_t* m_rawPixelArray;

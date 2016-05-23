@@ -5,7 +5,6 @@
 using namespace LightFx;
 
 Bitmap::Bitmap(uint64_t height, uint64_t width) :
-    IntensityObject(1),
     m_height(height),
     m_width(width)
 {
@@ -33,7 +32,7 @@ void Bitmap::AddToPixelValue(uint64_t x, uint64_t y, Pixel& value)
     m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)].B = std::min(1.0, currentColor.B + value.B); 
 }
 
-void Bitmap::BlendInBitmap(BitmapPtr blendBitmap)
+void Bitmap::BlendInBitmap(BitmapPtr blendBitmap, double intensity)
 {
     // Make sure our bitmaps are the size
     if (GetHeight() != blendBitmap->GetHeight() ||
@@ -49,13 +48,12 @@ void Bitmap::BlendInBitmap(BitmapPtr blendBitmap)
             Pixel blendedPixel;
             Pixel localValue = m_bitmap[x][y];
             Pixel compositeValue = blendBitmap->GetPixel(x, y);
-            double blendIntensity = blendBitmap->Intensity;
 
             // For this blend we are trying to emulate light. So we will use light as intensity and only add the 
             // color values together.
-            blendedPixel.R = std::min(1.0, ((compositeValue.R * blendIntensity) + localValue.R));
-            blendedPixel.G = std::min(1.0, ((compositeValue.G * blendIntensity) + localValue.G));
-            blendedPixel.B = std::min(1.0, ((compositeValue.B * blendIntensity) + localValue.B));
+            blendedPixel.R = std::min(1.0, ((compositeValue.R * intensity) + localValue.R));
+            blendedPixel.G = std::min(1.0, ((compositeValue.G * intensity) + localValue.G));
+            blendedPixel.B = std::min(1.0, ((compositeValue.B * intensity) + localValue.B));
 
             // Set the new color
             SetPixel(x, y, blendedPixel);
@@ -63,16 +61,13 @@ void Bitmap::BlendInBitmap(BitmapPtr blendBitmap)
     }
 }
 
-void Bitmap::FillRect(LightColor& lightColor, uint64_t top, uint64_t left, uint64_t right, uint64_t bottom)
+void Bitmap::FillRect(Pixel& pixel, uint64_t top, uint64_t left, uint64_t right, uint64_t bottom)
 {
     // Do a quick bound check
     if (top > bottom || left > right || right > GetWidth() || bottom > GetHeight())
     {
         throw std::invalid_argument("Args out of bounds");
     }
-
-    // Flatten the LightColor
-    Pixel pixel(lightColor);
 
     // Start at the left and go to right
     for (uint64_t x = left; x < right; x++)

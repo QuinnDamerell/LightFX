@@ -4,7 +4,7 @@
 
 #include "Common.h"
 #include "Layers/Drawable/IColorable.h"
-#include "Layers/Drawable/IIntensitable.h"
+#include "Fadable/IFadable.h"
 #include "Layers/Drawable/TimelineObject.h"
 #include "Bitmap.h"
 
@@ -21,18 +21,9 @@ namespace LightFx
             {
             public:
 
-                // Sets the fade element for this drawable
-                void SetFadable(IIntensitablePtr intensitable)
-                {
-                    m_intensitable = intensitable;
-                    SetChildTimeline(std::dynamic_pointer_cast<TimelineObject>(m_intensitable));
-                }
-
             protected:
                 // We can only be created by base classes
-                SimpleColorableBase() :
-                    m_intensitable(nullptr)
-                {}
+             
 
                 //
                 // IColorable
@@ -49,7 +40,7 @@ namespace LightFx
                 virtual LightColor GetColor(uint64_t tickCount, milliseconds elapsedTime, double intensity) = 0;
 
             private:
-                IIntensitablePtr m_intensitable;
+
             };
         }
     }

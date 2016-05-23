@@ -8,10 +8,8 @@
 namespace LightFx
 {
     DECLARE_SMARTPOINTER(Bitmap);
-    class Bitmap :
-        IntensityObject
+    class Bitmap
     {
-
     public:
         Bitmap(uint64_t height, uint64_t width);
 
@@ -62,21 +60,21 @@ namespace LightFx
         // Clears the bitmap
         void Clear()
         {
-            LightColor empty(0, 0, 0, 0);
+            Pixel empty(0, 0, 0);
             FillRect(empty);
         }
 
         // Blends a bitmap into this bitmap
-        void BlendInBitmap(BitmapPtr composite);
+        void BlendInBitmap(BitmapPtr composite, double intensity);
 
         // Fills the entire bitmap
-        void FillRect(LightColor& lightColor)
+        void FillRect(Pixel& pixel)
         {
-            FillRect(lightColor, 0, 0, GetWidth(), GetHeight());
+            FillRect(pixel, 0, 0, GetWidth(), GetHeight());
         }
 
         // Fills a region of the bitmap
-        void FillRect(LightColor& lightColor, uint64_t top, uint64_t left, uint64_t right, uint64_t bottom);
+        void FillRect(Pixel& pixel, uint64_t top, uint64_t left, uint64_t right, uint64_t bottom);
 
     protected:
         // Keep the height and width.

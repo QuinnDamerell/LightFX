@@ -22,32 +22,28 @@
     <ClInclude Include="inc\Bitmap.h" />
     <ClInclude Include="inc\Common.h" />
     <ClInclude Include="inc\ConstantRateDriver.h" />
-    <ClInclude Include="inc\IDrivable.h" />
-    <ClInclude Include="inc\ILayer.h" />
-    <ClInclude Include="inc\Layers\Drawable\Color\ConstantColorable.h" />
-    <ClInclude Include="inc\Layers\Drawable\DrawableLayer.h" />
-    <ClInclude Include="inc\Layers\Drawable\Draw\DrawablePixel.h" />
-    <ClInclude Include="inc\Layers\Drawable\IColorable.h" />
-    <ClInclude Include="inc\Layers\Drawable\IDrawable.h" />
-    <ClInclude Include="inc\Layers\Drawable\IIntensitable.h" />
-    <ClInclude Include="inc\Layers\Drawable\Intensity\ConstantIntensity.h" />
-    <ClInclude Include="inc\Layers\Drawable\Intensity\SimpleIntensityFade.h" />
-    <ClInclude Include="inc\Layers\Drawable\TimelineObject.h" />
-    <ClInclude Include="inc\Layers\Drawable\SimpleColorableBase.h" />
-    <ClInclude Include="inc\Layers\Drawable\SimpleDrawableBase.h" />
-    <ClInclude Include="inc\Layers\Drawable\SimpleIntensitableBase.h" />
-    <ClInclude Include="inc\Layers\SolidColorLayer.h" />
+    <ClInclude Include="inc\Drawables\Drawable.h" />
+    <ClInclude Include="inc\Drawables\SolidDrawable.h" />
+    <ClInclude Include="inc\Fadables\Fader.h" />
+    <ClInclude Include="inc\IntensityObject.h" />
+    <ClInclude Include="inc\ITimelineObject.h" />
     <ClInclude Include="inc\OutputBitmap.h" />
     <ClInclude Include="inc\Panel.h" />
     <ClInclude Include="inc\Pixel.h" />
+    <ClInclude Include="inc\TimelineObject.h" />
     <ClInclude Include="inc\Timer.h" />
+    <ClInclude Include="interfaces\Colorables\IColorable.h" />
+    <ClInclude Include="interfaces\Drawables\IDrawable.h" />
+    <ClInclude Include="interfaces\Fadables\IFadable.h" />
+    <ClInclude Include="interfaces\Fadables\IFader.h" />
+    <ClInclude Include="interfaces\IDrivable.h" />
+    <ClInclude Include="interfaces\IIntensityObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Bitmap.cpp" />
     <ClCompile Include="src\ConstantRateDriver.cpp" />
-    <ClCompile Include="src\Layers\Drawable\DrawableLayer.cpp" />
-    <ClCompile Include="src\Layers\Drawable\SimpleColorableBase.cpp" />
-    <ClCompile Include="src\Layers\Drawable\SimpleDrawableBase.cpp" />
+    <ClCompile Include="src\Drawable\Drawable.cpp" />
+    <ClCompile Include="src\Drawable\SolidDrawable.cpp" />
     <ClCompile Include="src\OutputBitmap.cpp" />
     <ClCompile Include="src\Panel.cpp" />
     <ClCompile Include="src\Timer.cpp" />
@@ -103,7 +99,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>$(MSBuildProjectDirectory)\inc;$(MSBuildProjectDirectory)\public;$(IncludePath)</IncludePath>
+    <IncludePath>$(MSBuildProjectDirectory)\inc;$(MSBuildProjectDirectory)\interfaces;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

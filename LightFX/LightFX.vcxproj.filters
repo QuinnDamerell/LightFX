@@ -4,38 +4,32 @@
     <Filter Include="src">
       <UniqueIdentifier>{efbd5cea-fce1-4a86-b2cc-0952daf5e5e5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Layers">
-      <UniqueIdentifier>{b68838ea-4388-4d0a-b48f-8b6534ce67f2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="inc">
       <UniqueIdentifier>{25c33c71-b59e-4ac8-98cb-a4110cafdbe8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="inc\Layers">
-      <UniqueIdentifier>{2366f81b-d669-4bdf-a7e8-141e544cc83c}</UniqueIdentifier>
+    <Filter Include="interfaces">
+      <UniqueIdentifier>{2b179b83-55a5-4dd9-80d2-a9cf2fb710a3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="inc\Layers\Drawable">
+    <Filter Include="inc\Drawables">
       <UniqueIdentifier>{128e88b1-3059-43e9-8dd2-41178b8dd498}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Layers\Drawable">
-      <UniqueIdentifier>{06fcbfce-52f1-4d7e-8c0e-1360371b96db}</UniqueIdentifier>
+    <Filter Include="interfaces\Drawables">
+      <UniqueIdentifier>{8c22e348-f595-48ee-9303-2191a127f266}</UniqueIdentifier>
     </Filter>
-    <Filter Include="inc\Layers\Drawable\Color">
-      <UniqueIdentifier>{4b0169d7-ad87-4f0e-863c-9120e3d2a780}</UniqueIdentifier>
+    <Filter Include="interfaces\Colorables">
+      <UniqueIdentifier>{d8e32f7d-4fef-4765-bde8-85a3ae352f79}</UniqueIdentifier>
     </Filter>
-    <Filter Include="inc\Layers\Drawable\Draw">
-      <UniqueIdentifier>{c09aef19-683e-493a-a362-4e1407986c5c}</UniqueIdentifier>
+    <Filter Include="interfaces\Fadables">
+      <UniqueIdentifier>{2084f45c-d325-463f-b15d-dbf3fcce207f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Layers\Drawable\Color">
-      <UniqueIdentifier>{693ec167-ace9-44b2-8959-23833d7371a4}</UniqueIdentifier>
+    <Filter Include="inc\Fadables">
+      <UniqueIdentifier>{875255ba-351a-497a-8269-497749e6508a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Layers\Drawable\Draw">
-      <UniqueIdentifier>{2d089aa7-3a9c-412e-b7db-3150c5d6df8b}</UniqueIdentifier>
+    <Filter Include="inc\Colorables">
+      <UniqueIdentifier>{73c2a544-668e-4969-ac8f-9e24568dd285}</UniqueIdentifier>
     </Filter>
-    <Filter Include="inc\Layers\Drawable\Intensity">
-      <UniqueIdentifier>{80b4886c-0fd9-44b4-bcbf-71f9b3edce8d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Layers\Drawable\Intensity">
-      <UniqueIdentifier>{985bffbe-0f71-49a7-ab9e-05364bed1aa9}</UniqueIdentifier>
+    <Filter Include="src\Drawables">
+      <UniqueIdentifier>{22fd0bba-1e5f-49bc-8ea7-f1c3ded73586}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -46,12 +40,6 @@
       <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="inc\ConstantRateDriver.h">
-      <Filter>inc</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\IDrivable.h">
-      <Filter>inc</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\ILayer.h">
       <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="inc\OutputBitmap.h">
@@ -66,44 +54,41 @@
     <ClInclude Include="inc\Timer.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Layers\SolidColorLayer.h">
-      <Filter>inc\Layers</Filter>
+    <ClInclude Include="interfaces\IDrivable.h">
+      <Filter>interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Layers\Drawable\DrawableLayer.h">
-      <Filter>inc\Layers\Drawable</Filter>
+    <ClInclude Include="interfaces\IIntensityObject.h">
+      <Filter>interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Layers\Drawable\IColorable.h">
-      <Filter>inc\Layers\Drawable</Filter>
+    <ClInclude Include="inc\IntensityObject.h">
+      <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Layers\Drawable\IDrawable.h">
-      <Filter>inc\Layers\Drawable</Filter>
+    <ClInclude Include="inc\TimelineObject.h">
+      <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Layers\Drawable\SimpleDrawableBase.h">
-      <Filter>inc\Layers\Drawable</Filter>
+    <ClInclude Include="interfaces\Colorables\IColorable.h">
+      <Filter>interfaces\Colorables</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Layers\Drawable\SimpleColorableBase.h">
-      <Filter>inc\Layers\Drawable</Filter>
+    <ClInclude Include="interfaces\Fadables\IFadable.h">
+      <Filter>interfaces\Fadables</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Layers\Drawable\Color\ConstantColorable.h">
-      <Filter>inc\Layers\Drawable\Color</Filter>
+    <ClInclude Include="interfaces\Fadables\IFader.h">
+      <Filter>interfaces\Fadables</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Layers\Drawable\Draw\DrawablePixel.h">
-      <Filter>inc\Layers\Drawable\Draw</Filter>
+    <ClInclude Include="interfaces\Drawables\IDrawable.h">
+      <Filter>interfaces\Drawables</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Layers\Drawable\TimelineObject.h">
-      <Filter>inc\Layers\Drawable</Filter>
+    <ClInclude Include="inc\Drawables\Drawable.h">
+      <Filter>inc\Drawables</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Layers\Drawable\Intensity\ConstantIntensity.h">
-      <Filter>inc\Layers\Drawable\Intensity</Filter>
+    <ClInclude Include="inc\Drawables\SolidDrawable.h">
+      <Filter>inc\Drawables</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Layers\Drawable\Intensity\SimpleIntensityFade.h">
-      <Filter>inc\Layers\Drawable\Intensity</Filter>
+    <ClInclude Include="inc\Fadables\Fader.h">
+      <Filter>inc\Fadables</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Layers\Drawable\IIntensitable.h">
-      <Filter>inc\Layers\Drawable</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Layers\Drawable\SimpleIntensitableBase.h">
-      <Filter>inc\Layers\Drawable</Filter>
+    <ClInclude Include="inc\ITimelineObject.h">
+      <Filter>interfaces</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -122,14 +107,11 @@
     <ClCompile Include="src\ConstantRateDriver.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Layers\Drawable\DrawableLayer.cpp">
-      <Filter>src\Layers\Drawable</Filter>
+    <ClCompile Include="src\Drawable\Drawable.cpp">
+      <Filter>src\Drawables</Filter>
     </ClCompile>
-    <ClCompile Include="src\Layers\Drawable\SimpleDrawableBase.cpp">
-      <Filter>src\Layers\Drawable</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Layers\Drawable\SimpleColorableBase.cpp">
-      <Filter>src\Layers\Drawable</Filter>
+    <ClCompile Include="src\Drawable\SolidDrawable.cpp">
+      <Filter>src\Drawables</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
