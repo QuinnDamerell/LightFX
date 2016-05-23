@@ -34,14 +34,16 @@ namespace LightFx
                 SetDuration(duration);
             }
 
+            virtual ~Fader() {}
+
             // Fired when we should update
             virtual void OnTick(uint64_t tick, milliseconds elapsedTime) override;
 
             // Used to add a drawable to our list
-            void AddFadingDrawable(IIntensityObjectWeakPtr fadeable);
+            void AddFadingDrawable(IIntensityObjectWeakPtr fadeable) override;
 
             // Used to remove a drawable to out list
-            void RemoveFadingDrawable(IIntensityObjectWeakPtr fadeable);
+            void RemoveFadingDrawable(IIntensityObjectWeakPtr fadeable) override;
 
             //
             // Fader logic
