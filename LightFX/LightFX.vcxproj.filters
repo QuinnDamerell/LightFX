@@ -34,6 +34,9 @@
     <Filter Include="src\Fadables">
       <UniqueIdentifier>{8864fd3c-b4fe-4632-ba71-44b6f90c61b8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Colorables">
+      <UniqueIdentifier>{3c147fbb-7822-4697-93b1-a0f8f7569d23}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\Bitmap.h">
@@ -69,9 +72,6 @@
     <ClInclude Include="inc\TimelineObject.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="interfaces\Colorables\IColorable.h">
-      <Filter>interfaces\Colorables</Filter>
-    </ClInclude>
     <ClInclude Include="interfaces\Fadables\IFadable.h">
       <Filter>interfaces\Fadables</Filter>
     </ClInclude>
@@ -92,6 +92,18 @@
     </ClInclude>
     <ClInclude Include="inc\ITimelineObject.h">
       <Filter>interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaces\Colorables\IColorable.h">
+      <Filter>interfaces\Colorables</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaces\Colorables\IColorer.h">
+      <Filter>interfaces\Colorables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Colorables\Colorer.h">
+      <Filter>inc\Colorables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Colorables\RainbowColorer.h">
+      <Filter>inc\Colorables</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +133,12 @@
     </ClCompile>
     <ClCompile Include="src\TimelineObject.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Colorables\Colorer.cpp">
+      <Filter>src\Colorables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Colorables\RainbowColorer.cpp">
+      <Filter>src\Colorables</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

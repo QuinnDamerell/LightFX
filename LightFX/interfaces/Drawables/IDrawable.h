@@ -5,7 +5,7 @@
 #include "Common.h"
 #include "Bitmap.h"
 #include "IntensityObject.h"
-
+#include "Colorables/IColorable.h"
 
 namespace LightFx
 {
@@ -13,7 +13,8 @@ namespace LightFx
     {
         DECLARE_SMARTPOINTER(IDrawable);
         class IDrawable :
-            public IntensityObject
+            public IntensityObject,
+            public Colorables::IColorable
         {
         public:
             // Sets and updates the size of the drawable

@@ -5,6 +5,7 @@
 
 #include "Common.h"
 #include "Drawables/IDrawable.h"
+#include "Colorables/IColorable.h"
 #include "Bitmap.h"
 
 namespace LightFx
@@ -28,7 +29,7 @@ namespace LightFx
 
         DECLARE_SMARTPOINTER(Drawable);
         class Drawable :
-            public IDrawable          
+            public IDrawable
         {
 
         public:
@@ -63,14 +64,35 @@ namespace LightFx
             // Indicates if all of the time line objects are complete or not.
             virtual bool ShouldBeCleanedUp();
 
+            //
+            // IColorable
+
+            // Sets a colorable object
+            virtual void SetColorer(Colorables::IColorerPtr colorer);
+
+            // Gets the colorer if there is one
+            virtual Colorables::IColorerPtr GetColorer();
+
+            // Sets the color to the object
+            virtual void SetColor(Pixel color);
+
+            // Gets the color of the object
+            virtual Pixel GetColor();
+
         protected:
 
             typedef std::pair<IDrawablePtr, int64_t> DrawableZIndexPair;
+            typedef std::pair<Colorables::IColorerPtr, int64_t> ColorerZIndexPair;
 
             // 
             // Drawable logic
             std::mutex m_drawableCollectionLock;
             std::vector<DrawableZIndexPair> m_drawableCollection;
+
+            //
+            // Colorable
+            Pixel m_color;
+            Colorables::IColorerPtr m_colorer;
 
             // 
             // Bitmap logic

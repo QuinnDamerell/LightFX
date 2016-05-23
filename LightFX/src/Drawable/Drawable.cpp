@@ -69,6 +69,12 @@ void Drawable::OnDraw(uint64_t tick, milliseconds elapsedTime, BitmapPtr backBuf
         m_ignoredDrawTime = milliseconds(0);
     }
 
+    // Update the colorer if we have one
+    if (auto colorer = GetColorer())
+    {
+        colorer->OnTick(tick, elapsedTime);
+    }
+
     // First clear out bitmap
     m_bitmap->Clear();
 
@@ -123,4 +129,40 @@ bool Drawable::ShouldBeCleanedUp()
         }
     }
     return false;
+}
+
+// Gets the color
+Pixel Drawable::GetColor()
+{
+    return m_color;
+}
+
+// Sets the intensity
+void Drawable::SetColor(Pixel color)
+{
+    m_color = color;
+}
+
+// Sets a colorable object
+void Drawable::SetColorer(Colorables::IColorerPtr colorer)
+{
+    if (m_colorer)
+    {
+        // If we had a colorer remove ourselves.
+        m_colorer->RemoveColorable(std::dynamic_pointer_cast<IColorable>(shared_from_this()));
+    }
+
+    m_colorer = colorer;
+
+    if (m_colorer)
+    {
+        // If we have a colorer send register ourselves
+        m_colorer->AddColorable(std::dynamic_pointer_cast<IColorable>(shared_from_this()));
+    }
+}
+
+// Gets the colorer if there is one
+Colorables::IColorerPtr Drawable::GetColorer()
+{
+    return m_colorer;
 }

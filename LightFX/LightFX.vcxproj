@@ -20,6 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\Bitmap.h" />
+    <ClInclude Include="inc\Colorables\Colorer.h" />
+    <ClInclude Include="inc\Colorables\RainbowColorer.h" />
     <ClInclude Include="inc\Common.h" />
     <ClInclude Include="inc\ConstantRateDriver.h" />
     <ClInclude Include="inc\Drawables\Drawable.h" />
@@ -33,6 +35,7 @@
     <ClInclude Include="inc\TimelineObject.h" />
     <ClInclude Include="inc\Timer.h" />
     <ClInclude Include="interfaces\Colorables\IColorable.h" />
+    <ClInclude Include="interfaces\Colorables\IColorer.h" />
     <ClInclude Include="interfaces\Drawables\IDrawable.h" />
     <ClInclude Include="interfaces\Fadables\IFadable.h" />
     <ClInclude Include="interfaces\Fadables\IFader.h" />
@@ -41,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Bitmap.cpp" />
+    <ClCompile Include="src\Colorables\Colorer.cpp" />
+    <ClCompile Include="src\Colorables\RainbowColorer.cpp" />
     <ClCompile Include="src\ConstantRateDriver.cpp" />
     <ClCompile Include="src\Drawable\Drawable.cpp" />
     <ClCompile Include="src\Drawable\SolidDrawable.cpp" />
