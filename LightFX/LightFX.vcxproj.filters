@@ -128,12 +128,6 @@
     <ClCompile Include="src\ConstantRateDriver.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Drawable\Drawable.cpp">
-      <Filter>src\Drawables</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drawable\SolidDrawable.cpp">
-      <Filter>src\Drawables</Filter>
-    </ClCompile>
     <ClCompile Include="src\Fadables\Fader.cpp">
       <Filter>src\Fadables</Filter>
     </ClCompile>
@@ -147,6 +141,12 @@
       <Filter>src\Colorables</Filter>
     </ClCompile>
     <ClCompile Include="src\Drawables\SwipeDrawable.cpp">
+      <Filter>src\Drawables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drawables\Drawable.cpp">
+      <Filter>src\Drawables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drawables\SolidDrawable.cpp">
       <Filter>src\Drawables</Filter>
     </ClCompile>
   </ItemGroup>
