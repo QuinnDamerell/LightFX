@@ -5,13 +5,14 @@
 
 #include "Common.h"
 #include "ITimelineObject.h"
+#include "SharedFromThisHelper.h"
 
 namespace LightFx
 {
     DECLARE_SMARTPOINTER(TimelineObject);            
     class TimelineObject :
         public ITimelineObject,
-        public std::enable_shared_from_this<TimelineObject>
+        public SharedFromThis
     {
 
     public:

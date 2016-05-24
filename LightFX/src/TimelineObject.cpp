@@ -68,6 +68,6 @@ void TimelineObject::FireFinishedCallback()
 {
     if (auto callback = m_finishedCallback.lock())
     {
-        callback->OnTimelineFinished(shared_from_this());
+        callback->OnTimelineFinished(GetSharedPtr<ITimelineObject>());
     }
 }

@@ -105,6 +105,12 @@
     <ClInclude Include="inc\Colorables\RainbowColorer.h">
       <Filter>inc\Colorables</Filter>
     </ClInclude>
+    <ClInclude Include="inc\Drawables\SwipeDrawable.h">
+      <Filter>inc\Drawables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\SharedFromThisHelper.h">
+      <Filter>inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Timer.cpp">
@@ -139,6 +145,9 @@
     </ClCompile>
     <ClCompile Include="src\Colorables\RainbowColorer.cpp">
       <Filter>src\Colorables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drawables\SwipeDrawable.cpp">
+      <Filter>src\Drawables</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

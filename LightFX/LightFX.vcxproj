@@ -26,12 +26,14 @@
     <ClInclude Include="inc\ConstantRateDriver.h" />
     <ClInclude Include="inc\Drawables\Drawable.h" />
     <ClInclude Include="inc\Drawables\SolidDrawable.h" />
+    <ClInclude Include="inc\Drawables\SwipeDrawable.h" />
     <ClInclude Include="inc\Fadables\Fader.h" />
     <ClInclude Include="inc\IntensityObject.h" />
     <ClInclude Include="inc\ITimelineObject.h" />
     <ClInclude Include="inc\OutputBitmap.h" />
     <ClInclude Include="inc\Panel.h" />
     <ClInclude Include="inc\Pixel.h" />
+    <ClInclude Include="inc\SharedFromThisHelper.h" />
     <ClInclude Include="inc\TimelineObject.h" />
     <ClInclude Include="inc\Timer.h" />
     <ClInclude Include="interfaces\Colorables\IColorable.h" />
@@ -47,6 +49,7 @@
     <ClCompile Include="src\Colorables\Colorer.cpp" />
     <ClCompile Include="src\Colorables\RainbowColorer.cpp" />
     <ClCompile Include="src\ConstantRateDriver.cpp" />
+    <ClCompile Include="src\Drawables\SwipeDrawable.cpp" />
     <ClCompile Include="src\Drawable\Drawable.cpp" />
     <ClCompile Include="src\Drawable\SolidDrawable.cpp" />
     <ClCompile Include="src\Fadables\Fader.cpp" />

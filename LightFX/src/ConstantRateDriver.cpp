@@ -9,7 +9,7 @@ using namespace LightFx;
 void ConstantRateDriver::Start(milliseconds cycleTime)
 {
     m_callbackCount = 0;
-    ConstantRateDriverPtr thisss = shared_from_this();
+    ConstantRateDriverPtr thisss = GetSharedPtr<ConstantRateDriver>();
     m_timer.reset(new Timer(std::dynamic_pointer_cast<ITimerCallback>(shared_from_this()), cycleTime));
     m_timer->Start();
 }

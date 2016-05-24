@@ -6,6 +6,7 @@
 #include "Common.h"
 #include "Timer.h"
 #include "IDrivable.h"
+#include "SharedFromThisHelper.h"
 
 // #define PRINT_RENDER_TIME
 
@@ -14,7 +15,7 @@ namespace LightFx
     DECLARE_SMARTPOINTER(ConstantRateDriver);
     class ConstantRateDriver : 
         public ITimerCallback,
-        public std::enable_shared_from_this<ConstantRateDriver>
+        public SharedFromThis
     {
 
     public:

@@ -39,7 +39,8 @@ namespace LightFx
 
             Drawable(bool cleanUpWhenComplete) :
                 m_ignoredDrawTime(0),
-                m_cleanUpWhenComplete(cleanUpWhenComplete)
+                m_cleanUpWhenComplete(cleanUpWhenComplete),
+                m_forceCleanUp(false)
             { }
 
             // Sets and updates the size of the drawable
@@ -104,6 +105,7 @@ namespace LightFx
             //
             // Clean up logic
             bool m_cleanUpWhenComplete;
+            bool m_forceCleanUp;
 
             // Called when the drawable should draw it's self.
             virtual void OnDrawSelf(uint64_t tickCount, milliseconds elapsedTime)
