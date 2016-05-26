@@ -25,6 +25,7 @@
     <ClInclude Include="inc\Common.h" />
     <ClInclude Include="inc\ConstantRateDriver.h" />
     <ClInclude Include="inc\Drawables\Drawable.h" />
+    <ClInclude Include="inc\Drawables\ExpandingDrawable.h" />
     <ClInclude Include="inc\Drawables\SolidDrawable.h" />
     <ClInclude Include="inc\Drawables\SwipeDrawable.h" />
     <ClInclude Include="inc\Fadables\Fader.h" />
@@ -50,6 +51,7 @@
     <ClCompile Include="src\Colorables\RainbowColorer.cpp" />
     <ClCompile Include="src\ConstantRateDriver.cpp" />
     <ClCompile Include="src\Drawables\Drawable.cpp" />
+    <ClCompile Include="src\Drawables\ExpandingDrawable.cpp" />
     <ClCompile Include="src\Drawables\SolidDrawable.cpp" />
     <ClCompile Include="src\Drawables\SwipeDrawable.cpp" />
     <ClCompile Include="src\Fadables\Fader.cpp" />

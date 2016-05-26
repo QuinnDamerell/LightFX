@@ -44,7 +44,7 @@ namespace LightFx
                 m_direction = direction;
             }
 
-            // Fired when the last pass finshes
+            // Fired when the last pass finishes
             void OnTimelineFinished(ITimelineObjectPtr timeline);
 
         protected:

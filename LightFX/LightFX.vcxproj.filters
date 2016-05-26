@@ -111,6 +111,9 @@
     <ClInclude Include="inc\SharedFromThisHelper.h">
       <Filter>inc</Filter>
     </ClInclude>
+    <ClInclude Include="inc\Drawables\ExpandingDrawable.h">
+      <Filter>inc\Drawables</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Timer.cpp">
@@ -147,6 +150,9 @@
       <Filter>src\Drawables</Filter>
     </ClCompile>
     <ClCompile Include="src\Drawables\SolidDrawable.cpp">
+      <Filter>src\Drawables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drawables\ExpandingDrawable.cpp">
       <Filter>src\Drawables</Filter>
     </ClCompile>
   </ItemGroup>

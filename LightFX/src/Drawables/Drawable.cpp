@@ -120,6 +120,12 @@ void Drawable::CleanupWhenComplete(bool cleanup)
 // Indicates if all of the time line objects are complete or not.
 bool Drawable::ShouldBeCleanedUp()
 {
+    // If we are being forced clean up now.
+    if (m_forceCleanUp)
+    {
+        return true;
+    }
+
     // We will only consider cleaning up if we have a fader
     if (auto fader = GetFader())
     {

@@ -6,6 +6,7 @@ using namespace LightFx;
 using namespace LightFx::Drawables;
 using namespace LightFx::Fadables;
 
+
 // Called when the drawable should draw it's self.
 void SwipeDrawable::OnDrawSelf(uint64_t tickCount, milliseconds elapsedTime)
 {
