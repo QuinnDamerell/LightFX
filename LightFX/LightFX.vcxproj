@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="inc\Bitmap.h" />
     <ClInclude Include="inc\Colorables\Colorer.h" />
+    <ClInclude Include="inc\Colorables\CrossfadeColorer.h" />
     <ClInclude Include="inc\Colorables\RainbowColorer.h" />
     <ClInclude Include="inc\Common.h" />
     <ClInclude Include="inc\ConstantRateDriver.h" />
@@ -48,6 +49,7 @@
   <ItemGroup>
     <ClCompile Include="src\Bitmap.cpp" />
     <ClCompile Include="src\Colorables\Colorer.cpp" />
+    <ClCompile Include="src\Colorables\CrossfadeColorer.cpp" />
     <ClCompile Include="src\Colorables\RainbowColorer.cpp" />
     <ClCompile Include="src\ConstantRateDriver.cpp" />
     <ClCompile Include="src\Drawables\Drawable.cpp" />

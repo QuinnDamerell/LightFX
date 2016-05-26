@@ -114,6 +114,9 @@
     <ClInclude Include="inc\Drawables\ExpandingDrawable.h">
       <Filter>inc\Drawables</Filter>
     </ClInclude>
+    <ClInclude Include="inc\Colorables\CrossfadeColorer.h">
+      <Filter>inc\Colorables</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Timer.cpp">
@@ -154,6 +157,9 @@
     </ClCompile>
     <ClCompile Include="src\Drawables\ExpandingDrawable.cpp">
       <Filter>src\Drawables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Colorables\CrossfadeColorer.cpp">
+      <Filter>src\Colorables</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
