@@ -18,13 +18,23 @@ namespace LightFx
         {
         public:
             // Sets and updates the size of the drawable
-            virtual void SetSize(uint64_t height, uint64_t width) = 0;
+            virtual void SetSize(int64_t height, int64_t width) = 0;
+
+            // Set the top left corner of the drawable. This is the position
+            // where it will draw on the drawable under it.
+            virtual void SetPosition(int64_t x, int64_t y) = 0;
 
             // Returns the width
-            virtual uint64_t GetWitdh() = 0;
+            virtual int64_t GetWitdh() = 0;
 
             // Returns the height
-            virtual uint64_t GetHeight() = 0;
+            virtual int64_t GetHeight() = 0;
+
+            // Returns the X Position of this drawable
+            virtual int64_t GetXPosition() = 0;
+
+            // Returns the Y Position of this drawable
+            virtual int64_t GetYPosition() = 0;
 
             // Adds a drawable to the drawable
             virtual void AddDrawable(IDrawablePtr drawable, int64_t zIndex) = 0;

@@ -24,7 +24,7 @@ namespace LightFx
 
             ExpandingDrawable(bool shouldCleanUp);
 
-            void SetStartingPoint(uint64_t x, uint64_t y)
+            void SetStartingPoint(int64_t x, int64_t y)
             {
                 m_startingX = x;
                 m_startingY = y;
@@ -44,9 +44,9 @@ namespace LightFx
             virtual void OnDrawSelf(uint64_t tickCount, milliseconds elapsedTime) override;
 
         private:
-            uint64_t m_currentPosition;
-            uint64_t m_startingX;
-            uint64_t m_startingY;
+            int64_t m_currentPosition;
+            int64_t m_startingX;
+            int64_t m_startingY;
 
             // Holds the last side we drew, used for clean up.
             IDrawablePtr m_lastDrawnSide;

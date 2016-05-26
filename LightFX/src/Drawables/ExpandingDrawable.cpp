@@ -37,7 +37,7 @@ void ExpandingDrawable::OnDrawSelf(uint64_t tickCount, milliseconds elapsedTime)
 
 
     // The length we will draw
-    uint64_t drawLength = m_currentPosition * 2 + 1;
+    int64_t drawLength = m_currentPosition * 2 + 1;
 
     // Indicates if they are all done drawing.
     bool allSidesDone = true;

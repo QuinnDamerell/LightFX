@@ -3,7 +3,7 @@
 using namespace LightFx;
 using namespace LightFx::Drawables;
 
-Panel::Panel(uint64_t height, uint64_t width)
+Panel::Panel(int64_t height, int64_t width)
 {
     // Make the back buffer
     m_backBuffer = std::make_shared<Bitmap>(height, width);

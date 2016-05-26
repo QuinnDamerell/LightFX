@@ -20,12 +20,12 @@ namespace LightFx
 
         ~OutputBitmap();
 
-        uint64_t GetWidth()
+        int64_t GetWidth()
         {
             return m_inputBitmap->GetWidth();
         }
 
-        uint64_t GetHeight()
+        int64_t GetHeight()
         {
             return m_inputBitmap->GetHeight();
         }

@@ -4,7 +4,7 @@
 
 using namespace LightFx;
 
-Bitmap::Bitmap(uint64_t height, uint64_t width) :
+Bitmap::Bitmap(int64_t height, int64_t width) :
     m_height(height),
     m_width(width)
 {
@@ -16,7 +16,7 @@ Bitmap::Bitmap(uint64_t height, uint64_t width) :
     }
 }
 
-void Bitmap::SetPixel(uint64_t x, uint64_t y, Pixel& value)
+void Bitmap::SetPixel(int64_t x, int64_t y, Pixel& value)
 {
     m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)].B = value.B;
     m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)].G = value.G;
@@ -24,7 +24,7 @@ void Bitmap::SetPixel(uint64_t x, uint64_t y, Pixel& value)
 }
 
 
-void Bitmap::AddToPixelValue(uint64_t x, uint64_t y, Pixel& value)
+void Bitmap::AddToPixelValue(int64_t x, int64_t y, Pixel& value)
 {
     Pixel& currentColor = m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)];
     m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)].R = std::min(1.0, currentColor.R + value.R); 
@@ -32,22 +32,31 @@ void Bitmap::AddToPixelValue(uint64_t x, uint64_t y, Pixel& value)
     m_bitmap[static_cast<size_t>(x)][static_cast<size_t>(y)].B = std::min(1.0, currentColor.B + value.B); 
 }
 
-void Bitmap::BlendInBitmap(BitmapPtr blendBitmap, double intensity)
+void Bitmap::BlendInBitmap(BitmapPtr blendBitmap, int64_t xPos, int64_t yPos, double intensity)
 {
-    // Make sure our bitmaps are the size
-    if (GetHeight() != blendBitmap->GetHeight() ||
-        GetWidth() != blendBitmap->GetWidth())
+    // This bitmap can be a different size than use, we will just blend in whatever overlaps.
+    for (int x = xPos; x < m_width; x++)
     {
-        throw std::invalid_argument("Bitmaps must be the same size to blend.");
-    }
-
-    for (int x = 0; x < m_width; x++)
-    {
-        for (int y = 0; y < m_height; y++)
+        // Bounds check to make sure the blend bitmap is as big
+        if (x >= xPos + blendBitmap->GetWidth())
         {
+            // We are done.
+            break;
+        }
+
+
+        for (int y = yPos; y < m_height; y++)
+        {
+            // Bounds check to make sure the blend bitmap is as big
+            if (y >= yPos + blendBitmap->GetHeight())
+            {
+                // We are done.
+                break;
+            }
+
             Pixel blendedPixel;
             Pixel localValue = m_bitmap[x][y];
-            Pixel compositeValue = blendBitmap->GetPixel(x, y);
+            Pixel compositeValue = blendBitmap->GetPixel(x - xPos, y - yPos);
 
             // For this blend we are trying to emulate light. So we will use light as intensity and only add the 
             // color values together.
@@ -61,7 +70,7 @@ void Bitmap::BlendInBitmap(BitmapPtr blendBitmap, double intensity)
     }
 }
 
-void Bitmap::FillRect(Pixel& pixel, uint64_t top, uint64_t left, uint64_t right, uint64_t bottom)
+void Bitmap::FillRect(Pixel& pixel, int64_t top, int64_t left, int64_t right, int64_t bottom)
 {
     // Do a quick bound check
     if (top > bottom || left > right || right > GetWidth() || bottom > GetHeight())
@@ -70,10 +79,10 @@ void Bitmap::FillRect(Pixel& pixel, uint64_t top, uint64_t left, uint64_t right,
     }
 
     // Start at the left and go to right
-    for (uint64_t x = left; x < right; x++)
+    for (int64_t x = left; x < right; x++)
     {
         // And start at the top and go to bottom
-        for (uint64_t y = top; y < bottom; y++)
+        for (int64_t y = top; y < bottom; y++)
         {
             SetPixel(x, y, pixel);
         }

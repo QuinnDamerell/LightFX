@@ -40,17 +40,29 @@ namespace LightFx
             Drawable(bool cleanUpWhenComplete) :
                 m_ignoredDrawTime(0),
                 m_cleanUpWhenComplete(cleanUpWhenComplete),
-                m_forceCleanUp(false)
+                m_forceCleanUp(false),
+                m_xPos(0),
+                m_yPos(0)
             { }
 
             // Sets and updates the size of the drawable
-            virtual void SetSize(uint64_t height, uint64_t width);
+            virtual void SetSize(int64_t height, int64_t width);
+
+            // Set the top left corner of the drawable. This is the position
+            // where it will draw on the drawable under it.
+            virtual void SetPosition(int64_t x, int64_t y);
 
             // Returns the width
-            virtual uint64_t GetWitdh();
+            virtual int64_t GetWitdh();
 
             // Returns the height
-            virtual uint64_t GetHeight();
+            virtual int64_t GetHeight();
+
+            // Returns the X Position of this drawable
+            virtual int64_t GetXPosition();
+
+            // Returns the Y Position of this drawable
+            virtual int64_t GetYPosition();
 
             // Adds a drawable to the drawable
             virtual void AddDrawable(IDrawablePtr drawable, int64_t zIndex);
@@ -101,6 +113,10 @@ namespace LightFx
 
             // Holds anytime that passed but we ignored.
             milliseconds m_ignoredDrawTime;
+
+            // Position logic
+            int64_t m_xPos;
+            int64_t m_yPos;
 
             //
             // Clean up logic

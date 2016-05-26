@@ -26,7 +26,7 @@ namespace LightFx
             {}
 
             // Sets the position of the drawing
-            void SetPosition(uint64_t x, uint64_t y, uint64_t height, uint64_t width);
+            void SetPosition(int64_t x, int64_t y, int64_t height, int64_t width);
 
         protected:
 
@@ -34,10 +34,10 @@ namespace LightFx
             virtual void OnDrawSelf(uint64_t tickCount, milliseconds elapsedTime) override;
 
         private:
-            uint64_t m_x;
-            uint64_t m_y;
-            uint64_t m_height;
-            uint64_t m_width;
+            int64_t m_x;
+            int64_t m_y;
+            int64_t m_height;
+            int64_t m_width;
         };
     }
 }

@@ -6,22 +6,42 @@ using namespace LightFx::Drawables;
 
 
 // Called when size is set.
-void Drawable::SetSize(uint64_t height, uint64_t width)
+void Drawable::SetSize(int64_t height, int64_t width)
 {
     // Create a new bitmap of the correct size.
     m_bitmap = std::make_shared<Bitmap>(height, width);
 }
 
+// Set the top left corner of the drawable. This is the position
+// where it will draw on the drawable under it.
+void Drawable::SetPosition(int64_t x, int64_t y)
+{
+    m_xPos = x;
+    m_yPos = y;
+}
+
 // Returns the width
-uint64_t Drawable::GetWitdh()
+int64_t Drawable::GetWitdh()
 {
     return m_bitmap->GetWidth();
 }
 
 // Returns the height
-uint64_t Drawable::GetHeight()
+int64_t Drawable::GetHeight()
 {
     return m_bitmap->GetHeight();
+}
+
+// Returns the X Position of this drawable
+int64_t Drawable::GetXPosition()
+{
+    return m_xPos;
+}
+
+// Returns the Y Position of this drawable
+int64_t Drawable::GetYPosition()
+{
+    return m_yPos;
 }
 
 // Adds a drawable to the drawable
@@ -107,7 +127,7 @@ void Drawable::OnDraw(uint64_t tick, milliseconds elapsedTime, BitmapPtr backBuf
     OnDrawSelf(tick, elapsedTime);
 
     // Last, add our bitmap to the back buffer
-    backBuffer->BlendInBitmap(m_bitmap, GetIntensity());
+    backBuffer->BlendInBitmap(m_bitmap, GetXPosition(), GetYPosition(), GetIntensity());
 }
 
 // If set, when all of the time line objects on this drawable are done

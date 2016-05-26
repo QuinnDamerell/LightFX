@@ -3,7 +3,7 @@
 using namespace LightFx;
 using namespace LightFx::Drawables;
 
-void SolidDrawable::SetPosition(uint64_t x, uint64_t y, uint64_t height, uint64_t width)
+void SolidDrawable::SetPosition(int64_t x, int64_t y, int64_t height, int64_t width)
 {
     m_x = x;
     m_y = y;

@@ -11,44 +11,44 @@ namespace LightFx
     class Bitmap
     {
     public:
-        Bitmap(uint64_t height, uint64_t width);
+        Bitmap(int64_t height, int64_t width);
 
         //
         // Basic pixel logic 
         //
 
         // Returns what the pixel current is.
-        Pixel& GetPixel(uint64_t x, uint64_t y)
+        Pixel& GetPixel(int64_t x, int64_t y)
         {
             return m_bitmap[static_cast<unsigned int>(x)][static_cast<unsigned int>(y)];
         }
 
         // Sets a pixel to a value.
-        void SetPixel(uint64_t x, uint64_t y, Pixel& value);
+        void SetPixel(int64_t x, int64_t y, Pixel& value);
 
         // Sets a light color to the bitmap
-        void SetLightColor(uint64_t x, uint64_t y, LightColor& value)
+        void SetLightColor(int64_t x, int64_t y, LightColor& value)
         {
             Pixel pixel(value);
             SetPixel(x, y, pixel);
         }
 
         // Adds a color to the current value.
-        void AddToPixelValue(uint64_t x, uint64_t y, Pixel& value);
+        void AddToPixelValue(int64_t x, int64_t y, Pixel& value);
 
         // Sets a light color to the bitmap
-        void AddLightColorToPixel(uint64_t x, uint64_t y, LightColor& value)
+        void AddLightColorToPixel(int64_t x, int64_t y, LightColor& value)
         {
             Pixel pixel(value);
             AddToPixelValue(x, y, pixel);
         }
 
-        inline uint64_t GetWidth()
+        inline int64_t GetWidth()
         {
             return m_width;
         }
 
-        inline uint64_t GetHeight()
+        inline int64_t GetHeight()
         {
             return m_height;
         }
@@ -65,7 +65,7 @@ namespace LightFx
         }
 
         // Blends a bitmap into this bitmap
-        void BlendInBitmap(BitmapPtr composite, double intensity);
+        void BlendInBitmap(BitmapPtr composite, int64_t xPos, int64_t yPos, double intensity);
 
         // Fills the entire bitmap
         void FillRect(Pixel& pixel)
@@ -74,12 +74,12 @@ namespace LightFx
         }
 
         // Fills a region of the bitmap
-        void FillRect(Pixel& pixel, uint64_t top, uint64_t left, uint64_t right, uint64_t bottom);
+        void FillRect(Pixel& pixel, int64_t top, int64_t left, int64_t right, int64_t bottom);
 
     protected:
         // Keep the height and width.
-        uint64_t m_height;
-        uint64_t m_width;
+        int64_t m_height;
+        int64_t m_width;
 
         // Keeps the main bitmap we are drawing to.
         Pixel2DArray m_bitmap;

@@ -71,7 +71,7 @@ namespace LightFx
             throw std::runtime_error("Value of of range.");
         }
 
-        const uint8_t RANGE_SIZE = 6;
+        const int8_t RANGE_SIZE = 6;
         const double redRange[] = { 1, 1, 0, 0, 0, 1 };
         const double blueRange[] = { 0, 1, 1, 1, 0, 0 };
         const double greenRange[] = { 0, 0, 0, 1, 1, 1 };
@@ -83,8 +83,8 @@ namespace LightFx
         }
 
         // Find what bucket we are in for the value. (Which slice of the 1/6th are we)
-        uint8_t rangeBot = (uint8_t)std::floor(((value)* RANGE_SIZE));
-        uint8_t rangeTop = rangeBot + 1;
+        int8_t rangeBot = (int8_t)std::floor(((value)* RANGE_SIZE));
+        int8_t rangeTop = rangeBot + 1;
         if (rangeTop == RANGE_SIZE)
         {
             rangeTop = 0;

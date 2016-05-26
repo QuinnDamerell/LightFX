@@ -44,7 +44,7 @@ void SwipeDrawable::OnDrawSelf(uint64_t tickCount, milliseconds elapsedTime)
         position = m_currentPosition;
         if (m_direction == SwipeDirection::Left)
         {
-            position = GetWitdh() - position;
+            position = (GetWitdh() - 1) - position;
         }
 
         if (position < 0 || position == GetWitdh())

@@ -26,7 +26,7 @@ namespace LightFx
     {
 
     public:
-        Panel(uint64_t height, uint64_t width);
+        Panel(int64_t height, int64_t width);
 
         //
         // Render Logic
