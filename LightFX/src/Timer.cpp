@@ -1,5 +1,6 @@
 #include <chrono>
 #include <ratio>
+#include <functional>
 
 #include "Timer.h"
 

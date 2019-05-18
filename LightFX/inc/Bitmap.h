@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdint.h>
+#include <stdexcept>
 
 #include "Common.h"
 #include "Pixel.h"

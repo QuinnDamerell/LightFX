@@ -4,6 +4,7 @@
 #include <vector>
 #include <random>
 #include <algorithm>
+#include <stdexcept>
 
 #include "Common.h"
 #include "IntensityObject.h"
