@@ -35,7 +35,7 @@ void Bitmap::AddToPixelValue(int64_t x, int64_t y, Pixel& value)
 void Bitmap::BlendInBitmap(BitmapPtr blendBitmap, int64_t xPos, int64_t yPos, double intensity)
 {
     // This bitmap can be a different size than use, we will just blend in whatever overlaps.
-    for (int x = xPos; x < m_width; x++)
+    for (int64_t x = xPos; x < m_width; x++)
     {
         // Bounds check to make sure the blend bitmap is as big
         if (x >= xPos + blendBitmap->GetWidth())
@@ -45,7 +45,7 @@ void Bitmap::BlendInBitmap(BitmapPtr blendBitmap, int64_t xPos, int64_t yPos, do
         }
 
 
-        for (int y = yPos; y < m_height; y++)
+        for (int64_t y = yPos; y < m_height; y++)
         {
             // Bounds check to make sure the blend bitmap is as big
             if (y >= yPos + blendBitmap->GetHeight())

@@ -30,6 +30,7 @@
     <ClInclude Include="inc\Drawables\SolidDrawable.h" />
     <ClInclude Include="inc\Drawables\SwipeDrawable.h" />
     <ClInclude Include="inc\Fadables\Fader.h" />
+    <ClInclude Include="inc\Fadables\Strober.h" />
     <ClInclude Include="inc\IntensityObject.h" />
     <ClInclude Include="inc\ITimelineObject.h" />
     <ClInclude Include="inc\OutputBitmap.h" />
@@ -57,6 +58,7 @@
     <ClCompile Include="src\Drawables\SolidDrawable.cpp" />
     <ClCompile Include="src\Drawables\SwipeDrawable.cpp" />
     <ClCompile Include="src\Fadables\Fader.cpp" />
+    <ClCompile Include="src\Fadables\Strober.cpp" />
     <ClCompile Include="src\OutputBitmap.cpp" />
     <ClCompile Include="src\Panel.cpp" />
     <ClCompile Include="src\TimelineObject.cpp" />

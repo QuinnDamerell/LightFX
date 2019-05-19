@@ -34,10 +34,10 @@ namespace LightFx
             virtual void OnDrawSelf(uint64_t tickCount, milliseconds elapsedTime) override;
 
         private:
-            int64_t m_x;
-            int64_t m_y;
-            int64_t m_height;
-            int64_t m_width;
+            int64_t m_x = 0;
+            int64_t m_y = 0;
+            int64_t m_height = 0;
+            int64_t m_width = 0;
         };
     }
 }

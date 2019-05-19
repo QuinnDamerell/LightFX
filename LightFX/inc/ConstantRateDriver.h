@@ -42,7 +42,7 @@ namespace LightFx
 
         // The timer logic
         TimerUniquePtr m_timer;
-        uint64_t m_callbackCount;
+        uint64_t m_callbackCount = 0;
     };
 }
 #pragma once

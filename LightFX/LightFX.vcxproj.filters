@@ -90,6 +90,9 @@
     <ClInclude Include="inc\Fadables\Fader.h">
       <Filter>inc\Fadables</Filter>
     </ClInclude>
+    <ClInclude Include="inc\Fadables\Strober.h">
+      <Filter>inc\Fadables</Filter>
+    </ClInclude>
     <ClInclude Include="inc\ITimelineObject.h">
       <Filter>interfaces</Filter>
     </ClInclude>
@@ -135,6 +138,9 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Fadables\Fader.cpp">
+      <Filter>src\Fadables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fadables\Strober.cpp">
       <Filter>src\Fadables</Filter>
     </ClCompile>
     <ClCompile Include="src\TimelineObject.cpp">
