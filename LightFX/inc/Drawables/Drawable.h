@@ -64,6 +64,11 @@ namespace LightFx
             // Returns the Y Position of this drawable
             virtual int64_t GetYPosition();
 
+			virtual void SetCleanupFlag(bool cleanup)
+			{
+				m_forceCleanUp = cleanup;
+			}
+
             // Adds a drawable to the drawable
             virtual void AddDrawable(IDrawablePtr drawable, int64_t zIndex);
 
@@ -117,6 +122,8 @@ namespace LightFx
             // Position logic
             int64_t m_xPos;
             int64_t m_yPos;
+
+		private:
 
             //
             // Clean up logic

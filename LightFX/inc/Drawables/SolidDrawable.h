@@ -28,6 +28,16 @@ namespace LightFx
             // Sets the position of the drawing
             void SetPosition(int64_t x, int64_t y, int64_t height, int64_t width);
 
+			int64_t GetSolidDrawableX()
+			{
+				return m_x;
+			}
+
+			int64_t GetSolidDrawableY()
+			{
+				return m_y;
+			}
+
         protected:
 
             // Called when the drawable should draw it's self.

@@ -192,7 +192,7 @@ void ExpandingDrawable::OnDrawSelf(uint64_t tickCount, milliseconds elapsedTime)
             if (m_lastDrawnSide->GetFader()->IsComplete())
             {
                 // If our last fader is already done clean up now.
-                m_forceCleanUp = true;
+				SetCleanupFlag(true);
             }
             else
             {
@@ -203,7 +203,7 @@ void ExpandingDrawable::OnDrawSelf(uint64_t tickCount, milliseconds elapsedTime)
         else
         {
             // If we don't have a last drawn clean up now
-            m_forceCleanUp = true;
+			SetCleanupFlag(true);
         }
     }
 }
@@ -211,5 +211,5 @@ void ExpandingDrawable::OnDrawSelf(uint64_t tickCount, milliseconds elapsedTime)
 void ExpandingDrawable::OnTimelineFinished(ITimelineObjectPtr timeline)
 {
     // Now that the last fade is done clean up
-    m_forceCleanUp = true;
+	SetCleanupFlag(true);
 }

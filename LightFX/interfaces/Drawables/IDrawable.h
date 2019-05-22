@@ -36,6 +36,10 @@ namespace LightFx
             // Returns the Y Position of this drawable
             virtual int64_t GetYPosition() = 0;
 
+			// Sets a flag indicating if this drawable should be cleaned up and
+			// deleted.
+			virtual void SetCleanupFlag(bool cleanup) = 0;
+
             // Adds a drawable to the drawable
             virtual void AddDrawable(IDrawablePtr drawable, int64_t zIndex) = 0;
 

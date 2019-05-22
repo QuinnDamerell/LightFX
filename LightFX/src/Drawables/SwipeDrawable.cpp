@@ -88,5 +88,5 @@ void SwipeDrawable::OnDrawSelf(uint64_t tickCount, milliseconds elapsedTime)
 void SwipeDrawable::OnTimelineFinished(ITimelineObjectPtr timeline)
 {
     // We are done, so force our clean up.
-    m_forceCleanUp = true;
+	SetCleanupFlag(true);
 }
